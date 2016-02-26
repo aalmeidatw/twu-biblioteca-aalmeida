@@ -33,4 +33,9 @@ public class BookTest {
     public void shouldReturnPublicationYearAtBook() throws Exception {
         assertThat(myBook.getPublicationYear(), is(1980));
     }
+
+    @Test
+    public void shouldReturnTrueWhenBookIsAvaliable() throws Exception {
+        assertThat(myBook.isAvaliable(), is(true));
+    }
 }
