@@ -41,12 +41,14 @@ public class BookList {
 
         OutputMessages outputMessage = new OutputMessages();
 
-        Book selectedBook = new Book(
-                                new BookName(myBookList.get(key).getBookName()),
-                                new AuthorName(myBookList.get(key).getAuthorName()),
-                                new PublicationYear(myBookList.get(key).getPublicationYear()), true);
+        outputMessage.showBookData(searchBookOnList(key));
+    }
 
-        outputMessage.showBookData(selectedBook);
+    private Book searchBookOnList(int key){
+        return new Book(
+                new BookName(myBookList.get(key).getBookName()),
+                new AuthorName(myBookList.get(key).getAuthorName()),
+                new PublicationYear(myBookList.get(key).getPublicationYear()), true);
     }
 
 
