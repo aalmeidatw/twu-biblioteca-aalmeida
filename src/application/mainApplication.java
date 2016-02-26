@@ -14,6 +14,9 @@ public class mainApplication {
         outputMessages.welcomeMessage();
         bookList.createBookList();
         bookList.showBookList();
+        System.out.println("========================");
+        bookList.selectedBook(0);
+
 
 
     }

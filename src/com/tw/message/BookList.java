@@ -6,6 +6,7 @@ import model.AuthorName;
 import model.BookName;
 import model.PublicationYear;
 
+import java.lang.reflect.Parameter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -31,15 +32,22 @@ public class BookList {
 
     public void showBookList(){
 
-        this.myBookList.forEach(s-> System.out.println(s.getBookName()));
-
-
-
-
-
-
-
-
+        System.out.println("List of Available books: ");
+        this.myBookList.forEach(book-> System.out.println(" -> " + myBookList.indexOf(book)  + " : " +   book.getBookName()));
 
     }
+
+    public void selectedBook(int key){
+
+        OutputMessages outputMessage = new OutputMessages();
+
+        Book selectedBook = new Book(
+                                new BookName(myBookList.get(key).getBookName()),
+                                new AuthorName(myBookList.get(key).getAuthorName()),
+                                new PublicationYear(myBookList.get(key).getPublicationYear()), true);
+
+        outputMessage.showBookData(selectedBook);
+    }
+
+
 }
