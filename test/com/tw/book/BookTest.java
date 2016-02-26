@@ -4,24 +4,16 @@ import model.AuthorName;
 import model.PublicationYear;
 import org.junit.Before;
 import org.junit.Test;
-
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
 
 public class BookTest {
     private Book myBook;
-    private AuthorName authorName;
-    private PublicationYear publicationYear;
-    private boolean isAvailable;
-
 
     @Before
     public void setUp() throws Exception {
-        this.authorName = new AuthorName("João Simplicio");
-        this.publicationYear = new PublicationYear(1980);
-        this.isAvailable = true;
-        this.myBook = new Book(authorName, publicationYear, isAvailable);
+         this.myBook = new Book(new AuthorName("João Simplicio"), new PublicationYear(1980), true);
     }
 
     @Test
@@ -35,7 +27,13 @@ public class BookTest {
     }
 
     @Test
-    public void shouldReturnTrueWhenBookIsAvaliable() throws Exception {
+    public void shouldReturnTrueWhenBookIsAvailable() throws Exception {
         assertThat(myBook.isAvaliable(), is(true));
+    }
+
+    @Test
+    public void shouldReturnFalseWhenBookIsNotAvailable() throws Exception {
+        this.myBook = new Book(new AuthorName("João Simplicio"), new PublicationYear(1980), false);
+        assertThat(myBook.isAvaliable(), is(false));
     }
 }
