@@ -1,6 +1,7 @@
 package com.tw.book;
 
 import model.AuthorName;
+import model.BookName;
 import model.PublicationYear;
 import org.junit.Before;
 import org.junit.Test;
@@ -13,7 +14,12 @@ public class BookTest {
 
     @Before
     public void setUp() throws Exception {
-         this.myBook = new Book(new AuthorName("João Simplicio"), new PublicationYear(1980), true);
+         this.myBook = new Book(new BookName("O Vento"),new AuthorName("João Simplicio"), new PublicationYear(1980), true);
+    }
+
+    @Test
+    public void shouldReturnBookName() throws Exception {
+        assertThat(myBook.getBookName(), is("O Vento"));
     }
 
     @Test
@@ -33,7 +39,7 @@ public class BookTest {
 
     @Test
     public void shouldReturnFalseWhenBookIsNotAvailable() throws Exception {
-        this.myBook = new Book(new AuthorName("João Simplicio"), new PublicationYear(1980), false);
+        this.myBook = new Book(new BookName("O Vento"), new AuthorName("João Simplicio"), new PublicationYear(1980), false);
         assertThat(myBook.isAvaliable(), is(false));
     }
 }
