@@ -1,4 +1,4 @@
-package model;
+package com.twu.model;
 
 
 import org.junit.Before;

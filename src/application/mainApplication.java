@@ -1,21 +1,25 @@
 package application;
 
 
-import com.tw.message.BookList;
-import com.tw.message.OutputMessages;
+import com.twu.book.BookList;
+import com.twu.message.MessageToConsole;
 
 public class mainApplication {
 
     public static void main(String[] args) {
-        OutputMessages outputMessages = new OutputMessages();
+        MessageToConsole messageToConsole = new MessageToConsole();
         BookList bookList = new BookList();
 
 
-        outputMessages.welcomeMessage();
+        messageToConsole.welcomeMessage();
         bookList.createBookList();
-        bookList.showBookList();
-        System.out.println("========================");
-        bookList.selectedBook(0);
+//        bookList.showBookList();
+//        System.out.println("========================");
+//        bookList.selectedBook(0);
+//        System.out.println("========================");
+        //bookList.getCheckoutBook(0);
+        //System.out.println("========================");
+        //bookList.showBookList();
 
 
 
