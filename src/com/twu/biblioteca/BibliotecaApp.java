@@ -12,18 +12,44 @@ public class BibliotecaApp {
         BookList bookList = new BookList();
 
 
-        messageToConsole.welcomeMessage();
         bookList.createBookList();
+
+
+        messageToConsole.welcomeMessage();
+
+
+
+
         bookList.showBookList();
-        System.out.println("========================");
-        System.out.println("Livro selecionado");
-        bookList.selectedBook(1);
-        System.out.println("========================");
-        System.out.println("Fazendo checkout");
-        bookList.getCheckoutBook(0);
-        System.out.println("========================");
-        System.out.println("Nova lista de livros");
-        bookList.showBookList();
+
+        messageToConsole.selectedOptionMessage();
+        messageToConsole.showOtherFunctionsMessage();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//        messageToConsole.welcomeMessage();
+//        bookList.createBookList();
+//        bookList.showBookList();
+//        System.out.println("========================");
+//        System.out.println("Livro selecionado");
+//        bookList.selectedBook(1);
+//        System.out.println("========================");
+//        System.out.println("Fazendo checkout");
+//        bookList.getCheckoutBook(0);
+//        System.out.println("========================");
+//        System.out.println("Nova lista de livros");
+//        bookList.showBookList();
 
     }
 }

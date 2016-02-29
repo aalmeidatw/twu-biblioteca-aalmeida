@@ -20,6 +20,18 @@ public class MessageToConsole {
         System.out.println("That book is not available");
     }
 
+    public void selectedOptionMessage(){
+        System.out.println("===================================");
+        System.out.println("Select an option: ");
+    }
+
+    public void showOtherFunctionsMessage(){
+        System.out.println("-> L: Book List ");
+        System.out.println("-> C: Book ChecKout  ");
+        System.out.println("-> C: Book Return  ");
+        System.out.println("-> Q: Quit System  ");
+    }
+
 
 
 }

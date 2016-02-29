@@ -9,7 +9,7 @@ public class AuthorName {
         this.authorName = authorName;
     }
 
-    public  String getAuthorName(){
+    public final String getAuthorName(){
         return this.authorName;
     }
 }
