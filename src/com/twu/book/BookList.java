@@ -13,7 +13,7 @@ public class BookList {
     private MessageToConsole messageToConsole = new MessageToConsole();
 
      public void createBookList(){
-        Book book1 = new Book(new BookName("Dom Quixote"),new AuthorName("Miguel de Cervantes"), new PublicationYear(1605), true);
+        Book book1 = new Book(new BookName("Dom Quixote"),new AuthorName("Miguel de Cervantes"), new PublicationYear(1605), false);
         Book book2 = new Book(new BookName("Guerra e Paz"),new AuthorName("Liev Tolstói"), new PublicationYear(1869), true);
         Book book3 = new Book(new BookName("A Montanha Mágica"),new AuthorName("Thomas Mann"), new PublicationYear(1924), true);
         Book book4 = new Book(new BookName("Ulisses"),new AuthorName("James Joyce"), new PublicationYear(1922), true);
@@ -31,8 +31,15 @@ public class BookList {
     public void showBookList(){
         messageToConsole.printMessageOnConsole("List of Available Books! : ");
 
-        this.myBookList.forEach(book-> System.out.println(" -> " + myBookList.indexOf(book)  + " : " +   book.getBookName()));
-    }
+        this.myBookList.forEach(book ->{
+                if(book.isAvaliable() == true){
+                    System.out.println(" -> " + myBookList.indexOf(book)  + " : " +   book.getBookName());
+                }
+        });
+     }
+
+
+
 
     public void selectedBook(int key){
         sendBookNameToPrintInConsole(key);
@@ -54,6 +61,11 @@ public class BookList {
 
     public void getCheckoutBook(int key){
         this.myBookList.remove(key);
+    }
+
+    public void deliverBook(){
+
+
     }
 
 
