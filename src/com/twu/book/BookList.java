@@ -13,8 +13,8 @@ public class BookList {
     private MessageToConsole messageToConsole = new MessageToConsole();
 
      public void createBookList(){
-        Book book1 = new Book(new BookName("Dom Quixote"),new AuthorName("Miguel de Cervantes"), new PublicationYear(1605), false);
-        Book book2 = new Book(new BookName("Guerra e Paz"),new AuthorName("Liev Tolstói"), new PublicationYear(1869), true);
+        Book book1 = new Book(new BookName("Dom Quixote"),new AuthorName("Miguel de Cervantes"), new PublicationYear(1605), true);
+        Book book2 = new Book(new BookName("Guerra e Paz"),new AuthorName("Liev Tolstói"), new PublicationYear(1869), false);
         Book book3 = new Book(new BookName("A Montanha Mágica"),new AuthorName("Thomas Mann"), new PublicationYear(1924), true);
         Book book4 = new Book(new BookName("Ulisses"),new AuthorName("James Joyce"), new PublicationYear(1922), true);
         Book book5 = new Book(new BookName("Cem Anos de Solidão"),new AuthorName("Gabriel García Márquez"), new PublicationYear(1967), true);
@@ -32,7 +32,7 @@ public class BookList {
         messageToConsole.printMessageOnConsole("List of Available Books! : ");
 
         this.myBookList.forEach(book ->{
-                if(book.isAvaliable() == true){
+                if(isAvaliable(myBookList.indexOf(book))){
                     System.out.println(" -> " + myBookList.indexOf(book)  + " : " +   book.getBookName());
                 }
         });
@@ -41,7 +41,7 @@ public class BookList {
 
 
 
-    public void selectedBook(int key){
+    public void showBookData(int key){
         sendBookNameToPrintInConsole(key);
         sendAuthorNameToPrintInConsole(key);
         sendPublicationYearToPrintInConsole(key);
@@ -60,10 +60,35 @@ public class BookList {
     }
 
     public void getCheckoutBook(int key){
-        this.myBookList.remove(key);
+
+        if (isAvaliable(key)) {
+            setNotAvaliableBook(key);
+            messageToConsole.successfulCheckoutMessage();
+        }else {
+            messageToConsole.unsuccessfulCheckoutMessage();
+        }
     }
 
-    public void deliverBook(){
+    private boolean isAvaliable(int key){
+        return this.myBookList.get(key).isAvaliable() == true;
+    }
+
+    private void setNotAvaliableBook(int key){
+        this.myBookList.get(key).setAvaliableBook(false);
+
+    }
+
+    public void showBooksToReturn(){
+
+        messageToConsole.printMessageOnConsole("List of Books to Return : ");
+
+        this.myBookList.forEach(book ->{
+            if(!isAvaliable(myBookList.indexOf(book))){
+                System.out.println(" -> " + myBookList.indexOf(book)
+                                          + " : " +   book.getBookName());
+            }
+        });
+
 
 
     }

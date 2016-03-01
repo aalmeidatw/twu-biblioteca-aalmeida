@@ -2,6 +2,7 @@ package com.twu.biblioteca;
 
 
 import com.twu.book.BookList;
+import com.twu.getInput.GetScannerInput;
 import com.twu.message.MessageToConsole;
 
 public class BibliotecaApp {
@@ -10,20 +11,36 @@ public class BibliotecaApp {
 
         MessageToConsole messageToConsole = new MessageToConsole();
         BookList bookList = new BookList();
+        GetScannerInput getScannerInput = new GetScannerInput();
+
+
+
+
+        boolean exitSystem = false;
 
 
         bookList.createBookList();
-
-
+        bookList.showBookList();
+        bookList.showBooksToReturn();
         messageToConsole.welcomeMessage();
 
+//
+//        do {
+//
+//            messageToConsole.selectedOptionMessage();
+//            messageToConsole.showOtherFunctionsMessage();
+//
+//            System.out.println("loop");
+//
+//
+//
+//            exitSystem = getScannerInput.isOutSystem();
+//
+//
+//        }   while (!exitSystem);
 
 
 
-        bookList.showBookList();
-
-        messageToConsole.selectedOptionMessage();
-        messageToConsole.showOtherFunctionsMessage();
 
 
 

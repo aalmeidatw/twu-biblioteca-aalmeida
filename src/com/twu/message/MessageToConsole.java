@@ -21,8 +21,7 @@ public class MessageToConsole {
     }
 
     public void selectedOptionMessage(){
-        System.out.println("===================================");
-        System.out.println("Select an option: ");
+        System.out.println("Select Option: ");
     }
 
     public void showOtherFunctionsMessage(){

@@ -29,6 +29,10 @@ public class Book {
         return publicationYear.getPublicationYear();
     }
 
+    public void setAvaliableBook(boolean avaliable){
+        this.isAvaliable = avaliable;
+    }
+
     public boolean isAvaliable(){
         return isAvaliable;
     }
