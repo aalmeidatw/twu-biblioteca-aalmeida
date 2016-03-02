@@ -27,6 +27,7 @@ public class MessageToConsole {
 
     public void showOtherFunctionsMessage(){
         System.out.println("-> L: List of available books ");
+        System.out.println("-> B: Book Detail  ");
         System.out.println("-> R: Request book a checkout  ");
         System.out.println("-> C: Return book a library  ");
         System.out.println("-> Q: Quit System  ");

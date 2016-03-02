@@ -29,6 +29,10 @@ public class BibliotecaApp {
                  bookList.showBookList();
                  break;
 
+             case "B":
+                bookList.bookDetail();
+                 break;
+
              case "R":
                  bookList.checkoutBook();
                  break;
