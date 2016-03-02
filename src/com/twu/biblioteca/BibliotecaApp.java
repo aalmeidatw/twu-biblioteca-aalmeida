@@ -35,8 +35,10 @@ public class BibliotecaApp {
              case "C":
                  bookList.bookReturn();
                  break;
+
              case "Q":
                  quitSystem = true;
+                 break;
 
              default:
                  messageToConsole.printMessageOnConsole("Select a valid option!");

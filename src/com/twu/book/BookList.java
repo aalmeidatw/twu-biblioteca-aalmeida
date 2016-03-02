@@ -66,7 +66,7 @@ public class BookList {
             showBookDetailInfo(indexBook);
             getCheckoutBook(indexBook);
         }else
-            messageToConsole.printMessageOnConsole("Book not found.");
+            messageToConsole.printMessageOnConsole("Book is not found.");
     }
 
 
@@ -90,12 +90,34 @@ public class BookList {
 
     }
 
+    private void setAvaliableBook(int key){
+        this.myBookList.get(key).setAvaliableBook(true);
+    }
+
     public void bookReturn(){
         showBooksToReturn();
+        messageToConsole.printMessageOnConsole("Select book a Return : ");
+        int value = getScannerInput.getInputIndex();
+
+
+
+        if(!isAvaliable(value)){
+            setAvaliableBook(value);
+            messageToConsole.printMessageOnConsole("Thank you for returning the book.");
+
+        }else {
+            messageToConsole.printMessageOnConsole("That is not a valid book to return.");
+        }
+
+
 
     }
 
-    public void showBooksToReturn(){
+
+
+
+
+    private void showBooksToReturn(){
 
         messageToConsole.printMessageOnConsole("List of Books to Return : ");
 
