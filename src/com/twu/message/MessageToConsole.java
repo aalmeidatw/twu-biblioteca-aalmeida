@@ -21,13 +21,14 @@ public class MessageToConsole {
     }
 
     public void selectedOptionMessage(){
+        System.out.println("\n\n ");
         System.out.println("Select Option: ");
     }
 
     public void showOtherFunctionsMessage(){
-        System.out.println("-> L: Book List ");
-        System.out.println("-> C: Book ChecKout  ");
-        System.out.println("-> C: Book Return  ");
+        System.out.println("-> L: List of available books ");
+        System.out.println("-> R: Request book a checkout  ");
+        System.out.println("-> C: Return book a library  ");
         System.out.println("-> Q: Quit System  ");
     }
 
