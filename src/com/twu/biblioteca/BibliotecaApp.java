@@ -37,6 +37,10 @@ public class BibliotecaApp {
                  break;
              case "Q":
                  quitSystem = true;
+
+             default:
+                 messageToConsole.printMessageOnConsole("Select a valid option!");
+
         }
      }  while (!quitSystem);
 
