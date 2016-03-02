@@ -91,15 +91,13 @@ public class BookList {
     }
 
     public void bookReturn(){
+        showBooksToReturn();
 
     }
 
     public void showBooksToReturn(){
 
         messageToConsole.printMessageOnConsole("List of Books to Return : ");
-
-
-
 
         this.myBookList.forEach(book ->{
             if(!isAvaliable(myBookList.indexOf(book))){
