@@ -10,7 +10,7 @@ public class GetScannerInput {
     private MessageToConsole messageToConsole;
     Scanner scanner = new Scanner(System.in);
 
-    public String getScanner(){
+    public String getUserInfoScanner(){
 
         System.out.println("\n\n ");
         System.out.println("Choise a letter :");

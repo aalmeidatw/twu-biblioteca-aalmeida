@@ -21,7 +21,7 @@ public class BibliotecaApp {
      do {
          messageToConsole.selectedOptionMessage();
          messageToConsole.showOtherFunctionsMessage();
-         String option = getScannerInput.getScanner();
+         String option = getScannerInput.getUserInfoScanner();
 
          switch (option) {
              case "L":
