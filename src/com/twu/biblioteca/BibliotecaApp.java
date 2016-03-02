@@ -1,6 +1,6 @@
 package com.twu.biblioteca;
 import com.twu.book.BookList;
-import com.twu.getInput.GetScannerInput;
+import com.twu.getInput.ScannerInputUser;
 import com.twu.message.MessageToConsole;
 
 
@@ -10,7 +10,7 @@ public class BibliotecaApp {
 
         MessageToConsole messageToConsole = new MessageToConsole();
         BookList bookList = new BookList();
-        GetScannerInput getScannerInput = new GetScannerInput();
+        ScannerInputUser scannerInputUser = new ScannerInputUser();
          bookList.createBookList();
 
 
@@ -21,7 +21,8 @@ public class BibliotecaApp {
      do {
          messageToConsole.selectedOptionMessage();
          messageToConsole.showOtherFunctionsMessage();
-         String option = getScannerInput.getUserInfoScanner();
+
+         String option = scannerInputUser.getUserInfoScanner();
 
          switch (option) {
              case "L":

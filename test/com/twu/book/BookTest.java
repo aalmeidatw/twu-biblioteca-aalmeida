@@ -23,12 +23,12 @@ public class BookTest {
     }
 
     @Test
-    public void shouldReturnAuthorNameAtBook() throws Exception {
+    public void shouldReturnAuthorName() throws Exception {
         assertThat(myBook.getAuthorName(), is("João Simplicio"));
     }
 
     @Test
-    public void shouldReturnPublicationYearAtBook() throws Exception {
+    public void shouldReturnPublicationYear() throws Exception {
         assertThat(myBook.getPublicationYear(), is(1980));
     }
 

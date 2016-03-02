@@ -1,12 +1,10 @@
 package com.twu.getInput;
 
-
-
 import com.twu.message.MessageToConsole;
 import java.util.Scanner;
 
-public class GetScannerInput {
-    private MessageToConsole messageToConsole;
+public class ScannerInputUser {
+    private MessageToConsole messageToConsole = new MessageToConsole();
     Scanner scanner = new Scanner(System.in);
 
     public String getUserInfoScanner(){

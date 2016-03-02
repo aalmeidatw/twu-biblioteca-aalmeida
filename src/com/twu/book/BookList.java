@@ -1,7 +1,7 @@
 package com.twu.book;
 
 
-import com.twu.getInput.GetScannerInput;
+import com.twu.getInput.ScannerInputUser;
 import com.twu.message.MessageToConsole;
 import com.twu.model.AuthorName;
 import com.twu.model.BookName;
@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class BookList {
     private ArrayList<Book> myBookList = new ArrayList<>();
     private MessageToConsole messageToConsole = new MessageToConsole();
-    GetScannerInput getScannerInput = new GetScannerInput();
+    ScannerInputUser scannerInputUser = new ScannerInputUser();
 
      public void createBookList(){
         Book book1 = new Book(new BookName("Dom Quixote"),new AuthorName("Miguel de Cervantes"), new PublicationYear(1605), true);
@@ -60,7 +60,7 @@ public class BookList {
     public void checkoutBook(){
 
         showBookList();
-        int indexBook = getScannerInput.getInputIndex();
+        int indexBook = scannerInputUser.getInputIndex();
 
         if (indexBook <= this.myBookList.size() - 1) {
             showBookDetailInfo(indexBook);
@@ -97,9 +97,7 @@ public class BookList {
     public void bookReturn(){
         showBooksToReturn();
         messageToConsole.printMessageOnConsole("Select book a Return : ");
-        int value = getScannerInput.getInputIndex();
-
-
+        int value = scannerInputUser.getInputIndex();
 
         if(!isAvaliable(value)){
             setAvaliableBook(value);
@@ -108,17 +106,9 @@ public class BookList {
         }else {
             messageToConsole.printMessageOnConsole("That is not a valid book to return.");
         }
-
-
-
     }
 
-
-
-
-
-    private void showBooksToReturn(){
-
+     private void showBooksToReturn(){
         messageToConsole.printMessageOnConsole("List of Books to Return : ");
 
         this.myBookList.forEach(book ->{
