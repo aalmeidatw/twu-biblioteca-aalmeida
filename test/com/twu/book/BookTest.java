@@ -45,13 +45,13 @@ public class BookTest {
 
     @Test
     public void shouldReturnAvaliableBooleanProperty(){
-        this.myBook.setAvaliableBook(true);
+        this.myBook.setAvailableBook(true);
         assertThat(this.myBook.isAvailable(), is(true));
     }
 
     @Test
     public void shouldReturnNotAvaliableBooleanProperty(){
-        this.myBook.setAvaliableBook(false);
+        this.myBook.setAvailableBook(false);
         assertThat(this.myBook.isAvailable(), is(false));
     }
 

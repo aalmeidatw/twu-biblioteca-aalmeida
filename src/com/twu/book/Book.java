@@ -29,7 +29,7 @@ public class Book {
         return publicationYear.getPublicationYear();
     }
 
-    public void setAvaliableBook(boolean avaliable){
+    public void setAvailableBook(boolean avaliable){
         this.isAvaliable = avaliable;
     }
 

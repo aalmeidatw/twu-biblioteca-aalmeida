@@ -31,7 +31,7 @@ public class BookList {
         messageToConsole.printMessageOnConsole("List of Available Books! : ");
 
         this.myBookList.forEach(book ->{
-                if(isAvaliable(myBookList.indexOf(book))){
+                if(isAvailable(myBookList.indexOf(book))){
                     messageToConsole.printMessageOnConsole(" -> " + myBookList.indexOf(book)  + " : " +   book.getBookName());
                 }
         });
@@ -73,25 +73,25 @@ public class BookList {
 
     public void getCheckoutBook(int key){
 
-        if (isAvaliable(key)) {
-            setNotAvaliableBook(key);
+        if (isAvailable(key)) {
+            setNotAvailableBook(key);
             messageToConsole.successfulCheckoutMessage();
         }else {
             messageToConsole.unsuccessfulCheckoutMessage();
         }
     }
 
-    private boolean isAvaliable(int key){
+    private boolean isAvailable(int key){
         return this.myBookList.get(key).isAvailable() == true;
     }
 
-    private void setNotAvaliableBook(int key){
-        this.myBookList.get(key).setAvaliableBook(false);
+    private void setNotAvailableBook(int key){
+        this.myBookList.get(key).setAvailableBook(false);
 
     }
 
     private void setAvaliableBook(int key){
-        this.myBookList.get(key).setAvaliableBook(true);
+        this.myBookList.get(key).setAvailableBook(true);
     }
 
     public void bookReturn(){
@@ -99,7 +99,7 @@ public class BookList {
         messageToConsole.printMessageOnConsole("Select book a Return : ");
         int value = scannerInputUser.getInputIndex();
 
-        if(!isAvaliable(value)){
+        if(!isAvailable(value)){
             setAvaliableBook(value);
             messageToConsole.printMessageOnConsole("Thank you for returning the book.");
 
@@ -112,7 +112,7 @@ public class BookList {
         messageToConsole.printMessageOnConsole("List of Books to Return : ");
 
         this.myBookList.forEach(book ->{
-            if(!isAvaliable(myBookList.indexOf(book))){
+            if(!isAvailable(myBookList.indexOf(book))){
                 messageToConsole.printMessageOnConsole(" -> " + myBookList.indexOf(book)  + " : " +   book.getBookName());
             }
         });
