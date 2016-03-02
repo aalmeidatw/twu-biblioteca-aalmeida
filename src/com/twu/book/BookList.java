@@ -82,7 +82,7 @@ public class BookList {
     }
 
     private boolean isAvaliable(int key){
-        return this.myBookList.get(key).isAvaliable() == true;
+        return this.myBookList.get(key).isAvailable() == true;
     }
 
     private void setNotAvaliableBook(int key){

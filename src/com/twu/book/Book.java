@@ -33,7 +33,7 @@ public class Book {
         this.isAvaliable = avaliable;
     }
 
-    public boolean isAvaliable(){
+    public boolean isAvailable(){
         return isAvaliable;
     }
 

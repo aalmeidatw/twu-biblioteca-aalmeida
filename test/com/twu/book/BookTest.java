@@ -34,12 +34,20 @@ public class BookTest {
 
     @Test
     public void shouldReturnTrueWhenBookIsAvailable() throws Exception {
-        assertThat(myBook.isAvaliable(), is(true));
+        assertThat(myBook.isAvailable(), is(true));
     }
 
     @Test
     public void shouldReturnFalseWhenBookIsNotAvailable() throws Exception {
         this.myBook = new Book(new BookName("O Vento"), new AuthorName("João Simplicio"), new PublicationYear(1980), false);
-        assertThat(myBook.isAvaliable(), is(false));
+        assertThat(myBook.isAvailable(), is(false));
     }
+
+    @Test
+    public void shouldReturnAvaliableBooleanProperty(){
+        this.myBook.setAvaliableBook(true);
+        assertThat(this.myBook.isAvailable(), is(true));
+    }
+
+
 }
