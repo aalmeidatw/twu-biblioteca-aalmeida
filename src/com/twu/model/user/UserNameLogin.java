@@ -1,10 +1,10 @@
 package com.twu.model.user;
 
 
-public class UserName {
+public class UserNameLogin {
     private String name;
 
-    public UserName(String name){
+    public UserNameLogin(String name){
         this.name = name;
     }
 

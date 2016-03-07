@@ -1,7 +1,7 @@
 package com.twu.message;
 
 
-public class MessageToConsole {
+public class PrinterMessage {
 
     public final void welcomeMessage(){
         System.out.println("Welcome to Bangalore Public Library!");
@@ -32,9 +32,5 @@ public class MessageToConsole {
         System.out.println("-> C: Return book a library  ");
         System.out.println("-> Q: Quit System  ");
     }
-
-
-
-
 
 }

@@ -1,4 +1,4 @@
-package com.twu.getInput;
+package com.twu.scanner;
 
 
 import org.junit.Test;
