@@ -11,19 +11,22 @@ public class BookAlgorithm {
     private ScannerInputUser scannerInputUser = new ScannerInputUser();
 
 
-
-
     public void showBookList(ArrayList<Book> myBooks){
         
         this.myBooks = myBooks;
         printerMessage.printMessageOnConsole("List of Available Books! : ");
 
+        showListOfAvailableBooks(myBooks);
+    }
 
+    private void showListOfAvailableBooks(ArrayList<Book> myBooks){
         this.myBooks.forEach(book ->{
             if(isAvailable(myBooks.indexOf(book))){
                 printerMessage.printMessageOnConsole(" -> " + myBooks.indexOf(book)  + " : " +   book.getBookName());
             }
         });
+
+
     }
 
     private boolean isAvailable(int key){
