@@ -111,11 +111,16 @@ public class BookAlgorithm {
     private void showBooksToReturn() {
         printerMessage.printMessageOnConsole("List of Books to Return : ");
 
+        searchBooksToReturn();
+    }
+
+    private void searchBooksToReturn(){
         this.myBooks.forEach(book -> {
             if (!bookIsAvailable(this.myBooks.indexOf(book))) {
                 printerMessage.printMessageOnConsole(" -> " + myBooks.indexOf(book) + " : " + book.getBookName());
             }
         });
+
     }
 
 
