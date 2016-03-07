@@ -10,100 +10,97 @@ public class BookAlgorithm {
     private PrinterMessage printerMessage = new PrinterMessage();
     private ScannerInputUser scannerInputUser = new ScannerInputUser();
 
-
-    public void showBookList(ArrayList<Book> myBooks){
-        
+    public BookAlgorithm(ArrayList<Book> myBooks){
         this.myBooks = myBooks;
-        printerMessage.printMessageOnConsole("List of Available Books! : ");
-
-        showListOfAvailableBooks(myBooks);
     }
 
-    private void showListOfAvailableBooks(ArrayList<Book> myBooks){
+
+    public void showListAvailableBooks(){
+
+        printerMessage.printMessageOnConsole("List of Available Books! : ");
+        searchListOfAvailableBooks();
+    }
+
+    private void searchListOfAvailableBooks(){
         this.myBooks.forEach(book ->{
-            if(isAvailable(myBooks.indexOf(book))){
+            if(bookIsAvailable(myBooks.indexOf(book))){
                 printerMessage.printMessageOnConsole(" -> " + myBooks.indexOf(book)  + " : " +   book.getBookName());
             }
         });
-
-
     }
 
-    private boolean isAvailable(int key){
-        return this.myBooks.get(key).isAvailable() == true;
-    }
+    public void bookDetail(){
 
-    public void bookDetail(ArrayList<Book> myBooks){
+        showListAvailableBooks();
 
-        showBookList(myBooks);
         printerMessage.printMessageOnConsole("Select book: ");
 
         int value = scannerInputUser.getInputIndex();
-        showBookDetailInfo(value, myBooks);
+        showBookDetailInfo(value);
     }
 
-    private void showBookDetailInfo(int key, ArrayList<Book> myBooks){
+    private void showBookDetailInfo(int key){
 
         printerMessage.printMessageOnConsole("Book info: ");
-        sendBookNameToPrintInConsole(key, myBooks);
-        sendAuthorNameToPrintInConsole(key, myBooks);
-        sendPublicationYearToPrintInConsole(key, myBooks);
+        sendBookNameToPrintInConsole(key);
+        sendAuthorNameToPrintInConsole(key);
+        sendPublicationYearToPrintInConsole(key);
     }
 
-    private void sendAuthorNameToPrintInConsole(int key, ArrayList<Book> myBooks){
+    private void sendAuthorNameToPrintInConsole(int key){
         printerMessage.printMessageOnConsole("Author Name: " + myBooks.get(key).getAuthorName());
     }
 
-    private void sendBookNameToPrintInConsole(int key, ArrayList<Book> myBooks){
+    private void sendBookNameToPrintInConsole(int key){
         printerMessage.printMessageOnConsole("Book Name: " + myBooks.get(key).getBookName());
     }
 
-    private void sendPublicationYearToPrintInConsole(int key, ArrayList<Book> myBooks){
+    private void sendPublicationYearToPrintInConsole(int key){
         printerMessage.printMessageOnConsole("Publication Year: " + myBooks.get(key).getPublicationYear());
     }
 
-    public void checkoutBook(ArrayList<Book> myBooks){
+    public void checkoutBook(){
 
-        showBookList(myBooks);
+        showListAvailableBooks();
         int indexBook = scannerInputUser.getInputIndex();
 
         if (indexBook <= myBooks.size() - 1) {
-            showBookDetailInfo(indexBook, myBooks);
-            getCheckoutBook(indexBook, myBooks);
+            showBookDetailInfo(indexBook);
+            getCheckoutBook(indexBook);
         }else
             printerMessage.printMessageOnConsole("Book is not found.");
     }
 
-    public void getCheckoutBook(int key, ArrayList<Book> myBooks){
+    public void getCheckoutBook(int key){
 
-        if (isAvailable(key, myBooks)) {
-            setNotAvailableBook(key, myBooks);
+        if (bookIsAvailable(key)) {
+            setNotAvailableBook(key);
             printerMessage.successfulCheckoutMessage();
         }else {
             printerMessage.unsuccessfulCheckoutMessage();
         }
     }
 
-    private boolean isAvailable(int key, ArrayList<Book> myBooks){
+    private boolean bookIsAvailable(int key){
         return myBooks.get(key).isAvailable() == true;
     }
 
-    private void setNotAvailableBook(int key, ArrayList<Book> myBooks){
+    private void setNotAvailableBook(int key){
         myBooks.get(key).setAvailableBook(false);
 
     }
 
-    private void setAvaliableBook(int key, ArrayList<Book> myBooks){
+    private void setAvaliableBook(int key){
         myBooks.get(key).setAvailableBook(true);
     }
 
-    public void bookReturn(ArrayList<Book> myBooks){
-        showBooksToReturn(myBooks);
+    public void bookReturn(){
+        showBooksToReturn();
         printerMessage.printMessageOnConsole("Select book a Return : ");
         int value = scannerInputUser.getInputIndex();
 
-        if(!isAvailable(value)){
-            setAvaliableBook(value, myBooks);
+        if(!bookIsAvailable(value)){
+            setAvaliableBook(value);
             printerMessage.printMessageOnConsole("Thank you for returning the book.");
 
         }else {
@@ -111,11 +108,11 @@ public class BookAlgorithm {
         }
     }
 
-    private void showBooksToReturn(ArrayList<Book> myBooks) {
+    private void showBooksToReturn() {
         printerMessage.printMessageOnConsole("List of Books to Return : ");
 
-        myBooks.forEach(book -> {
-            if (!isAvailable(myBooks.indexOf(book))) {
+        this.myBooks.forEach(book -> {
+            if (!bookIsAvailable(this.myBooks.indexOf(book))) {
                 printerMessage.printMessageOnConsole(" -> " + myBooks.indexOf(book) + " : " + book.getBookName());
             }
         });

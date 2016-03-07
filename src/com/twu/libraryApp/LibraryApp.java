@@ -16,8 +16,8 @@ public class LibraryApp {
 
         PrinterMessage printerMessage = new PrinterMessage();
         ScannerInputUser scannerInputUser = new ScannerInputUser();
-        BookAlgorithm bookAlgorithm = new BookAlgorithm();
         ArrayList<Book> myBooks = new BookList().createBookList();
+        BookAlgorithm bookAlgorithm = new BookAlgorithm(myBooks);
 
         printerMessage.welcomeMessage();
         boolean quitSystem = false;
@@ -31,19 +31,19 @@ public class LibraryApp {
 
          switch (option) {
              case "L":
-                 bookAlgorithm.showBookList(myBooks);
+                 bookAlgorithm.showListAvailableBooks();
                  break;
 
              case "B":
-                 bookAlgorithm.bookDetail(myBooks);
+                 bookAlgorithm.bookDetail();
                  break;
 
              case "R":
-                 bookAlgorithm.checkoutBook(myBooks);
+                 bookAlgorithm.checkoutBook();
                  break;
 
              case "C":
-                 bookAlgorithm.bookReturn(myBooks);
+                 bookAlgorithm.bookReturn();
                  break;
 
              case "Q":
