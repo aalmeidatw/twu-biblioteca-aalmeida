@@ -43,17 +43,17 @@ public class BookTest {
         assertThat(myBook.isAvailable(), is(false));
     }
 
-    @Test
-    public void shouldReturnAvaliableBooleanProperty(){
-        this.myBook.setAvailableBook(true);
-        assertThat(this.myBook.isAvailable(), is(true));
-    }
-
-    @Test
-    public void shouldReturnNotAvaliableBooleanProperty(){
-        this.myBook.setAvailableBook(false);
-        assertThat(this.myBook.isAvailable(), is(false));
-    }
+//    @Test
+//    public void shouldReturnAvaliableBooleanProperty(){
+//        this.myBook.setAvailableBook(true);
+//        assertThat(this.myBook.isAvailable(), is(true));
+//    }
+//
+//    @Test
+//    public void shouldReturnNotAvaliableBooleanProperty(){
+//        this.myBook.setAvailableBook(false);
+//        assertThat(this.myBook.isAvailable(), is(false));
+//    }
 
 
 }

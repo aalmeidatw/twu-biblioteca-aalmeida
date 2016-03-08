@@ -26,11 +26,17 @@ public class PrinterMessage {
     }
 
     public void showOtherFunctionsMessage(){
+        System.out.println("\n\n ");
         System.out.println("-> L: List of available books ");
         System.out.println("-> B: Book Detail  ");
         System.out.println("-> R: Request book a checkout  ");
         System.out.println("-> C: Return book a library  ");
         System.out.println("-> Q: Quit System  ");
+        System.out.println("-------> Type:  ");
+    }
+
+    public final void listOfAvailableBooksMessage(){
+        System.out.print("List of Available Books: ");
     }
 
 }

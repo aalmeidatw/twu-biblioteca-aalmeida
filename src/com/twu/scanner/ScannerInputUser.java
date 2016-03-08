@@ -9,8 +9,8 @@ public class ScannerInputUser {
 
     public String getUserInfoScanner(){
 
-        printerMessage.printMessageOnConsole("\n\n ");
-        printerMessage.printMessageOnConsole("Choise a letter :");
+//        printerMessage.printMessageOnConsole("\n\n ");
+//        printerMessage.printMessageOnConsole("Choise a letter :");
 
         return scanner.nextLine().toUpperCase();
     }
