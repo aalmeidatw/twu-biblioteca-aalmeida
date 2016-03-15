@@ -12,31 +12,15 @@ public class PrinterMessage {
         System.out.println(value);
     }
 
-    public final void successfulCheckoutMessage(){
-        System.out.println("Thank you! Enjoy the book");
-    }
-
-    public final void unsuccessfulCheckoutMessage(){
-        System.out.println("That book is not available");
-    }
-
-    public void selectedOptionMessage(){
+    public final void showMenuOptions(){
         System.out.println("\n\n ");
-        System.out.println("Select Option: ");
-    }
-
-    public void showOtherFunctionsMessage(){
-        System.out.println("\n\n ");
-        System.out.println("-> L: List of available books ");
-        System.out.println("-> B: Book Detail  ");
-        System.out.println("-> R: Request book a checkout  ");
-        System.out.println("-> C: Return book a library  ");
+        System.out.println("-> 1: List of available books ");
+        System.out.println("-> 2: Book Detail  ");
+        System.out.println("-> 3: Request book a checkout  ");
+        System.out.println("-> 4: Return book a library  ");
         System.out.println("-> Q: Quit System  ");
         System.out.println("-------> Type:  ");
     }
 
-    public final void listOfAvailableBooksMessage(){
-        System.out.print("List of Available Books: ");
-    }
 
 }

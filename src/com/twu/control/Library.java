@@ -5,7 +5,6 @@ import com.twu.book.Book;
 import com.twu.model.AuthorName;
 import com.twu.model.BookName;
 import com.twu.model.PublicationYear;
-
 import java.util.ArrayList;
 
 public class Library {
@@ -18,11 +17,32 @@ public class Library {
         this.myBooks = myBooks;
     }
 
-    public void returnBook(String bookName){
+    public void setBookAsAvailable(String bookName){
         myBooks.forEach(book -> {
                 if(book.getBookName().equals(bookName)){
                     book.setBookIsAvailable();
+
                 }});
+    }
+
+
+    public void checkOutBook(String bookName){
+        Book selectedBook = returnBookAsList(bookName);
+        markBookAsReserved(selectedBook);
+     }
+
+
+    private Book returnBookAsList(String bookName){
+            this.availableBooks.forEach(book -> {
+
+                if(book.getBookName().equals(bookName)){
+                    myBook = book;
+                    return;
+                }
+
+            });
+
+        return myBook;
     }
 
 
@@ -35,13 +55,8 @@ public class Library {
      return this.availableBooks;
     }
 
-    public void markBookAsReserved(int value){
-        String bookName = getNameAtBook(value);
-
-        this.myBooks.forEach(book -> {
-            if(book.getBookName().equals(bookName)){
-                book.setBookIsNotAvailable();
-             }});
+    private void markBookAsReserved(Book myBook){
+         myBook.setBookIsNotAvailable();
     }
 
     public Book getBookForDetail(int value){

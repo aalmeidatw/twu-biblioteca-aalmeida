@@ -5,12 +5,13 @@ import com.twu.model.AuthorName;
 import com.twu.model.BookName;
 import com.twu.model.PublicationYear;
 
+import java.util.ArrayList;
+
 public class Book {
     private BookName bookName;
     private AuthorName authorName;
     private PublicationYear publicationYear;
     private boolean isAvailable;
-
 
     public Book (BookName bookName, AuthorName authorName, PublicationYear publicationYear, boolean isReserved){
         this.bookName = bookName;
@@ -42,5 +43,11 @@ public class Book {
         return isAvailable;
     }
 
-
+    @Override
+    public String toString() {
+        return "Book Name: " + bookName.getBookName() + "\n"
+                + "Author Name: "  + authorName.getAuthorName() + "\n"
+                +  "Publication Year: " + publicationYear.getPublicationYear()
+                + "\n\n";
+    }
 }
