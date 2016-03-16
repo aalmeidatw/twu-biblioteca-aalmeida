@@ -1,4 +1,4 @@
-package com.twu.model;
+package com.twu.model.bookData;
 
 
 public class AuthorName {

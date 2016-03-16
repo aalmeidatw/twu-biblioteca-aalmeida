@@ -1,11 +1,9 @@
-package com.twu.menu;
+package com.twu.IO;
 
 
-import com.twu.book.Book;
-import com.twu.book.BookList;
+import com.twu.model.book.Book;
+import com.twu.model.book.BookList;
 import com.twu.control.Library;
-import com.twu.message.PrinterMessage;
-import com.twu.scanner.ScannerInputUser;
 
 import java.util.ArrayList;
 

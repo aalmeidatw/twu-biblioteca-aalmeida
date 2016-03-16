@@ -1,5 +1,6 @@
 package com.twu.model;
 
+import com.twu.model.movieData.MovieName;
 import org.junit.Before;
 import org.junit.Test;
 

@@ -1,10 +1,10 @@
 package com.twu.control;
 
 
-import com.twu.book.Book;
-import com.twu.model.AuthorName;
-import com.twu.model.BookName;
-import com.twu.model.PublicationYear;
+import com.twu.model.book.Book;
+import com.twu.model.bookData.AuthorName;
+import com.twu.model.bookData.BookName;
+import com.twu.model.bookData.PublicationYear;
 import java.util.ArrayList;
 
 public class Library {

@@ -1,4 +1,4 @@
-package com.twu.model;
+package com.twu.model.movieData;
 
 
 public class Rate {

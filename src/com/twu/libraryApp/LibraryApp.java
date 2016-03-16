@@ -1,7 +1,7 @@
 package com.twu.libraryApp;
-import com.twu.menu.MenuOptions;
-import com.twu.message.PrinterMessage;
-import com.twu.scanner.ScannerInputUser;
+import com.twu.IO.MenuOptions;
+import com.twu.IO.PrinterMessage;
+import com.twu.IO.ScannerInputUser;
 
 public class LibraryApp {
 

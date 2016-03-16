@@ -1,4 +1,4 @@
-package com.twu.scanner;
+package com.twu.IO;
 
 
 import java.util.Scanner;

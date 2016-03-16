@@ -1,4 +1,4 @@
-package com.twu.message;
+package com.twu.IO;
 
 
 public class PrinterMessage {

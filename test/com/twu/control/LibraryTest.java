@@ -1,15 +1,13 @@
 package com.twu.control;
 
-import com.twu.book.Book;
-import com.twu.model.AuthorName;
-import com.twu.model.BookName;
-import com.twu.model.PublicationYear;
+import com.twu.model.book.Book;
+import com.twu.model.bookData.AuthorName;
+import com.twu.model.bookData.BookName;
+import com.twu.model.bookData.PublicationYear;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
-
-import static org.junit.Assert.*;
 
 
 public class LibraryTest {
