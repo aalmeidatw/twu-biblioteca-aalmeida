@@ -40,6 +40,17 @@ public class LibraryTest {
         library.checkOutBook(bookLibraryList, bookLibraryList.size() + 3);
     }
 
+    @Test
+    public void shouldSetBookAsUnavailable(){
+        library.checkOutBook(bookLibraryList,1);
+        assertThat(bookLibraryList.get(1).isAvailable(), is(false));
+    }
+
+
+
+
+
+
 
 
 
