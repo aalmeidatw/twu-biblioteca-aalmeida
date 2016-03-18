@@ -11,11 +11,11 @@ public class Book {
     private PublicationYear publicationYear;
     private boolean isAvailable;
 
-    public Book (BookName bookName, AuthorName authorName, PublicationYear publicationYear, boolean isReserved){
+    public Book (BookName bookName, AuthorName authorName, PublicationYear publicationYear){
         this.bookName = bookName;
         this.authorName = authorName;
         this.publicationYear = publicationYear;
-        this.isAvailable = isReserved;
+
     }
 
     public String getBookName(){return bookName.getBookName();}

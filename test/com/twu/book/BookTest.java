@@ -15,7 +15,7 @@ public class BookTest {
 
     @Before
     public void setUp() throws Exception {
-         this.myBook = new Book(new BookName("O Vento"),new AuthorName("João Simplicio"), new PublicationYear(1980), true);
+         this.myBook = new Book(new BookName("O Vento"),new AuthorName("João Simplicio"), new PublicationYear(1980));
     }
 
     @Test
@@ -32,29 +32,5 @@ public class BookTest {
     public void shouldReturnPublicationYear() throws Exception {
         assertThat(myBook.getPublicationYear(), is(1980));
     }
-
-    @Test
-    public void shouldReturnTrueWhenBookIsAvailable() throws Exception {
-        assertThat(myBook.isAvailable(), is(true));
-    }
-
-    @Test
-    public void shouldReturnFalseWhenBookIsNotAvailable() throws Exception {
-        this.myBook = new Book(new BookName("O Vento"), new AuthorName("João Simplicio"), new PublicationYear(1980), false);
-        assertThat(myBook.isAvailable(), is(false));
-    }
-
-//    @Test
-//    public void shouldReturnAvaliableBooleanProperty(){
-//        this.myBook.setAvailableBook(true);
-//        assertThat(this.myBook.isAvailable(), is(true));
-//    }
-//
-//    @Test
-//    public void shouldReturnNotAvaliableBooleanProperty(){
-//        this.myBook.setAvailableBook(false);
-//        assertThat(this.myBook.isAvailable(), is(false));
-//    }
-
 
 }
