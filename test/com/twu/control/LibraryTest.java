@@ -46,6 +46,13 @@ public class LibraryTest {
         assertThat(bookLibraryList.get(1).isAvailable(), is(false));
     }
 
+    @Test
+    public void shouldSetBookAsAvailable(){
+        library.checkOutBook(bookLibraryList,1);
+        library.checkInBook(bookLibraryList,1);
+        assertThat(bookLibraryList.get(1).isAvailable(), is(true));
+    }
+
 
 
 
