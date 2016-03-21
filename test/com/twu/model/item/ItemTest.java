@@ -12,7 +12,7 @@ public class ItemTest {
 
     @Before
     public void setUp() throws Exception {
-        this.item = new Item(new Name("Name"), new PublicationYear(0001), "Book");
+        this.item = new Item(new Name("Name"), new PublicationYear(0001));
 
     }
 
@@ -28,9 +28,4 @@ public class ItemTest {
 
     }
 
-    @Test
-    public void shouldReturnItemType() throws Exception {
-        assertThat(item.getType(), is("Book"));
-
-    }
 }

@@ -4,13 +4,10 @@ package com.twu.model.item;
 public class Item {
     private Name name;
     private PublicationYear publicationYear;
-    private String type;
 
-
-    public Item(Name name, PublicationYear publicationYear, String type){
+    public Item(Name name, PublicationYear publicationYear){
         this.name = name;
         this.publicationYear = publicationYear;
-        this.type = type;
     }
 
     public String getName() {
@@ -21,9 +18,7 @@ public class Item {
         return publicationYear.getPublicationYear();
     }
 
-    public String getType() {
-        return type;
-    }
+
 }
 
 

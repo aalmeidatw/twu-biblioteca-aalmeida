@@ -1,35 +1,38 @@
 package com.twu.model.book;
 
 
+import com.twu.model.item.Item;
+import com.twu.model.item.Name;
 import com.twu.model.item.PublicationYear;
 
-public class Book {
-    private BookName bookName;
+public class Book extends Item {
     private AuthorName authorName;
-    private PublicationYear publicationYear;
+    private String itemType;
 
 
-    public Book (BookName bookName, AuthorName authorName, PublicationYear publicationYear){
-        this.bookName = bookName;
+    public Book (Name name, PublicationYear publicationYear, AuthorName authorName){
+        super(name, publicationYear);
         this.authorName = authorName;
-        this.publicationYear = publicationYear;
+        this.itemType = "Book";
     }
 
-    public String getBookName(){return bookName.getBookName();}
+    public String getBookName(){
+        return super.getName();
+    }
 
     public String getAuthorName(){
         return authorName.getAuthorName();
     }
 
     public int getPublicationYear(){
-        return publicationYear.getPublicationYear();
+        return super.getPublicationYear();
     }
 
     @Override
     public String toString() {
-        return "Book Name: " + bookName.getBookName() + "\n"
+        return "Book Name: " + super.getName() + "\n"
                 + "Author Name: "  + authorName.getAuthorName() + "\n"
-                +  "Publication Year: " + publicationYear.getPublicationYear()
+                +  "Publication Year: " + super.getPublicationYear()
                 + "\n\n";
     }
 }

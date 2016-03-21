@@ -2,6 +2,7 @@ package com.twu.book;
 
 import com.twu.model.book.AuthorName;
 import com.twu.model.book.BookName;
+import com.twu.model.item.Name;
 import com.twu.model.item.PublicationYear;
 import com.twu.model.book.Book;
 import org.junit.Before;
@@ -15,7 +16,8 @@ public class BookTest {
 
     @Before
     public void setUp() throws Exception {
-         this.myBook = new Book(new BookName("O Vento"),new AuthorName("João Simplicio"), new PublicationYear(1980));
+         this.myBook = new Book(new Name("O Vento"), new PublicationYear(1980), new AuthorName("João Simplicio"));
+
     }
 
     @Test

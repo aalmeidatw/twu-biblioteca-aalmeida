@@ -4,6 +4,7 @@ package com.twu.control;
 import com.twu.model.book.Book;
 import com.twu.model.book.AuthorName;
 import com.twu.model.book.BookName;
+import com.twu.model.item.Name;
 import com.twu.model.item.PublicationYear;
 import com.twu.model.bookLibrary.BookLibrary;
 import org.junit.Before;
@@ -25,8 +26,8 @@ public class LibraryTest {
 
         this.library = new Library();
 
-        Book book1 = new Book(new BookName("BookName 1"),new AuthorName("AuthorName1"), new PublicationYear(0001));
-        Book book2 = new Book(new BookName("BookName 1"),new AuthorName("AuthorName1"), new PublicationYear(0002));
+        Book book1 = new Book(new Name("BookName 1"), new PublicationYear(0001), new AuthorName("AuthorName1"));
+        Book book2 = new Book(new Name("BookName 2"), new PublicationYear(0002), new AuthorName("AuthorName2"));
         bookList.add(book1);
         bookList.add(book2);
 
