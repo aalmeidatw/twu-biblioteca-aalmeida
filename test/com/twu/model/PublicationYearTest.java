@@ -1,7 +1,7 @@
 package com.twu.model;
 
 
-import com.twu.model.book.PublicationYear;
+import com.twu.model.item.PublicationYear;
 import org.junit.Before;
 import org.junit.Test;
 

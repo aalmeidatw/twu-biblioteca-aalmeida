@@ -1,11 +1,13 @@
 package com.twu.model.book;
 
 
+import com.twu.model.item.PublicationYear;
+
 public class Book {
     private BookName bookName;
     private AuthorName authorName;
     private PublicationYear publicationYear;
-    private boolean isAvailable;
+
 
     public Book (BookName bookName, AuthorName authorName, PublicationYear publicationYear){
         this.bookName = bookName;

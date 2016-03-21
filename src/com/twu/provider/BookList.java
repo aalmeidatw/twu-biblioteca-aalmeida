@@ -3,7 +3,7 @@ package com.twu.provider;
 import com.twu.model.book.Book;
 import com.twu.model.book.AuthorName;
 import com.twu.model.book.BookName;
-import com.twu.model.book.PublicationYear;
+import com.twu.model.item.PublicationYear;
 import java.util.ArrayList;
 
 

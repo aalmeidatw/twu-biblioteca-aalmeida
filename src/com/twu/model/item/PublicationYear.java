@@ -1,4 +1,4 @@
-package com.twu.model.book;
+package com.twu.model.item;
 
 
 public class PublicationYear {
