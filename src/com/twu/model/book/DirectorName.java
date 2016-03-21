@@ -1,4 +1,4 @@
-package com.twu.model.bookData;
+package com.twu.model.book;
 
 
 public class DirectorName {

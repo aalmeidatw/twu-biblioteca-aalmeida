@@ -1,7 +1,7 @@
 package com.twu.model;
 
 
-import com.twu.model.bookData.DirectorName;
+import com.twu.model.book.DirectorName;
 import org.junit.Before;
 import org.junit.Test;
 

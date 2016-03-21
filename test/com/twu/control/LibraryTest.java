@@ -2,9 +2,9 @@ package com.twu.control;
 
 
 import com.twu.model.book.Book;
-import com.twu.model.bookData.AuthorName;
-import com.twu.model.bookData.BookName;
-import com.twu.model.bookData.PublicationYear;
+import com.twu.model.book.AuthorName;
+import com.twu.model.book.BookName;
+import com.twu.model.book.PublicationYear;
 import com.twu.model.bookLibrary.BookLibrary;
 import org.junit.Before;
 import org.junit.Test;
@@ -22,6 +22,7 @@ public class LibraryTest {
 
     @Before
     public void setUp() throws Exception {
+
         this.library = new Library();
 
         Book book1 = new Book(new BookName("BookName 1"),new AuthorName("AuthorName1"), new PublicationYear(0001));
@@ -33,25 +34,30 @@ public class LibraryTest {
         BookLibrary bookLibrary2 = new BookLibrary(book2, true);
         bookLibraryList.add(bookLibrary1);
         bookLibraryList.add(bookLibrary2);
+
+        library.createBooksList(bookLibraryList);
      }
 
     @Test (expected = NullPointerException.class)
     public void shouldThrowsNullPointerExceptionWhenIndexPassedIsBiggerThanList(){
-        library.checkOutBook(bookLibraryList, bookLibraryList.size() + 3);
+        library.checkOutBook(bookLibraryList.size() + 1);
     }
 
     @Test
     public void shouldSetBookAsUnavailable(){
-        library.checkOutBook(bookLibraryList,1);
+        library.checkOutBook(1);
         assertThat(bookLibraryList.get(1).isAvailable(), is(false));
     }
 
+
     @Test
     public void shouldSetBookAsAvailable(){
-        library.checkOutBook(bookLibraryList,1);
-        library.checkInBook(bookLibraryList,1);
+        library.checkInBook(1);
         assertThat(bookLibraryList.get(1).isAvailable(), is(true));
     }
+
+
+
 
 
 

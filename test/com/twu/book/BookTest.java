@@ -1,8 +1,8 @@
 package com.twu.book;
 
-import com.twu.model.bookData.AuthorName;
-import com.twu.model.bookData.BookName;
-import com.twu.model.bookData.PublicationYear;
+import com.twu.model.book.AuthorName;
+import com.twu.model.book.BookName;
+import com.twu.model.book.PublicationYear;
 import com.twu.model.book.Book;
 import org.junit.Before;
 import org.junit.Test;

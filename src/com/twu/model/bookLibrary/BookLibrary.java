@@ -31,7 +31,14 @@ public class BookLibrary {
 
     @Override
     public String toString() {
-        return "BookName: " + book.getBookName();
+        return "Book Name: " + book.getBookName();
+     }
+
+    public String getBookDetail(){
+        return "Book Name: " + book.getBookName() + "\n" +
+                "Author Name: " + book.getAuthorName() + "\n" +
+                "Publication Year: " + book.getPublicationYear() + "\n\n";
+
 
     }
 }

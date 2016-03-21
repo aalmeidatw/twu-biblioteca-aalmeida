@@ -1,10 +1,6 @@
 package com.twu.model.book;
 
 
-import com.twu.model.bookData.AuthorName;
-import com.twu.model.bookData.BookName;
-import com.twu.model.bookData.PublicationYear;
-
 public class Book {
     private BookName bookName;
     private AuthorName authorName;
@@ -15,7 +11,6 @@ public class Book {
         this.bookName = bookName;
         this.authorName = authorName;
         this.publicationYear = publicationYear;
-
     }
 
     public String getBookName(){return bookName.getBookName();}
@@ -26,19 +21,6 @@ public class Book {
 
     public int getPublicationYear(){
         return publicationYear.getPublicationYear();
-    }
-
-
-    public void setBookIsAvailable(){
-        this.isAvailable = true;
-    }
-
-    public void setBookIsNotAvailable(){
-        this.isAvailable = false;
-    }
-
-    public boolean isAvailable(){
-        return isAvailable;
     }
 
     @Override
