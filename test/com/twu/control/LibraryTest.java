@@ -3,7 +3,6 @@ package com.twu.control;
 
 import com.twu.model.book.Book;
 import com.twu.model.book.AuthorName;
-import com.twu.model.book.BookName;
 import com.twu.model.item.Name;
 import com.twu.model.item.PublicationYear;
 import com.twu.model.bookLibrary.BookLibrary;
