@@ -30,7 +30,7 @@ public class MovieTest {
     }
 
     @Test
-    public void shouldRetunRateValue() throws Exception {
+    public void shouldReturnRateValue() throws Exception {
         assertThat(movie.getRate(), is(10));
 
     }
