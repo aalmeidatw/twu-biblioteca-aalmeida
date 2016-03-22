@@ -32,6 +32,8 @@ public class Library {
     public boolean checkInItemInTheLibrary(String name){
 
         if (getUnAvailableItemInLibrary(name) != null){
+            ItemLibrary item = getUnAvailableItemInLibrary(name);
+            item.setAvailable();
 
             return true;
         }
@@ -91,7 +93,7 @@ public class Library {
     }
 
     public boolean itemIsEqualNameParameterAndItemIsNotAvailableInLibrary(ItemLibrary itemLibrary, String name){
-        return (  (itemLibrary.getItem().getName().equals(name) ) && !itemLibrary.isAvailable() );
+        return (  (itemLibrary.getItem().getName().equals(name) ) && (!itemLibrary.isAvailable()) );
 
     }
 

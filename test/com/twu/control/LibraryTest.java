@@ -153,6 +153,12 @@ public class LibraryTest {
         assertThat(library.checkInItemInTheLibrary("Mad Max"), is (true));
     }
 
+    @Test
+    public void shouldReturnFalseWhenItemUnAvailableIsNotFound(){
+        assertThat(library.checkInItemInTheLibrary("Mad Maxxx"), is (true));
+    }
+
+
 
 
 
