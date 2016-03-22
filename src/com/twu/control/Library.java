@@ -1,42 +1,88 @@
 package com.twu.control;
 
 
-import com.twu.model.bookLibrary.BookLibrary;
+
+import com.twu.model.book.Book;
+import com.twu.model.movie.Movie;
 import java.util.ArrayList;
 
+
 public class Library {
-    private ArrayList<BookLibrary> availableBooksList = new ArrayList<>();
+    private ArrayList<ItemLibrary> itemsListInLibrary = new ArrayList<>();
 
 
-    public void createBooksList(ArrayList<BookLibrary> bookList){
-        this.availableBooksList = bookList;
-     }
 
-    public void checkOutBook(int indexBook) throws NullPointerException {
+    public void getItemsLibrary(ArrayList<ItemLibrary> itemList){
+        this.itemsListInLibrary = itemList;
+    }
 
-        if (indexBook > availableBooksList.size()) {
-            throw new NullPointerException("IndexBook Error");
-        } else {
-            availableBooksList.get(indexBook).setUnavailable();
+
+
+    public boolean checkoutItemInTheLibrary(String name){
+
+        if (getAvailableItemInLibrary(name) != null){
+            ItemLibrary item = getAvailableItemInLibrary(name);
+            item.setIsNotAvailable();
+
+            return true;
         }
+        return false;
     }
 
-
-    public void checkInBook(int indexBook) {
-        availableBooksList.get(indexBook).setAvailable();
-    }
+    
 
 
-    public void showLibraryBooks(boolean isAvailable) {
-         this.availableBooksList.forEach(book -> {
-            if (((book.isAvailable()) == (isAvailable))) {
-                System.out.println(availableBooksList.indexOf(book) + " - " + book.toString());
+
+
+
+    public void showAvailableMoviesListInTheLibrary(){
+        itemsListInLibrary.stream().forEach(item ->{
+            if((item.getItem() instanceof Movie) && (item.isAvailable()))       {
+                System.out.println(item.getItem().getName());
             }});
     }
 
 
-    public String bookDetail(int indexBook) {
-        return this.availableBooksList.get(indexBook).getBookDetail();
+    public void showAvailableBooksListInTheLibrary(){
+        itemsListInLibrary.stream().forEach(item ->{
+            if( (item.getItem() instanceof Book)   && (item.isAvailable()) ){
+                System.out.println(item.getItem().getName());
+            }});
+    }
+
+
+    public ItemLibrary getAvailableItemInLibrary(String name) {
+
+      for (ItemLibrary itemLibrary : itemsListInLibrary){
+            if ( itemIsEqualNameParameterAndItemIsAvailableInLibrary(itemLibrary, name)  ){
+                return   itemLibrary;
+            }
+        }
+        return null;
+    }
+
+
+    public ItemLibrary getUnAvailableItemInLibrary(String name) {
+
+        for (ItemLibrary itemLibrary : itemsListInLibrary){
+            if(!itemIsEqualNameParameterAndItemIsNotAvailableInLibrary(itemLibrary, name)){
+                return   itemLibrary;
+            }
+        }
+        return null;
+    }
+
+
+
+
+    public boolean itemIsEqualNameParameterAndItemIsAvailableInLibrary(ItemLibrary itemLibrary, String name){
+        return (  (itemLibrary.getItem().getName().equals(name) ) && itemLibrary.isAvailable() );
 
     }
+
+    public boolean itemIsEqualNameParameterAndItemIsNotAvailableInLibrary(ItemLibrary itemLibrary, String name){
+        return (  (itemLibrary.getItem().getName().equals(name) ) && !itemLibrary.isAvailable() );
+
+    }
+
 }

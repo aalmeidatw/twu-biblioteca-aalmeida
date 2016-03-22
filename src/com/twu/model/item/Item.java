@@ -1,7 +1,7 @@
 package com.twu.model.item;
 
 
-public class Item {
+public  class Item {
     private Name name;
     private PublicationYear publicationYear;
 

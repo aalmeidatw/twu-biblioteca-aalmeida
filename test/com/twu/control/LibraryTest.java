@@ -3,67 +3,149 @@ package com.twu.control;
 
 import com.twu.model.book.Book;
 import com.twu.model.book.AuthorName;
+import com.twu.model.item.Item;
 import com.twu.model.item.Name;
 import com.twu.model.item.PublicationYear;
-import com.twu.model.bookLibrary.BookLibrary;
+import com.twu.model.movie.DirectorName;
+import com.twu.model.movie.Movie;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 
+import static junit.framework.TestCase.assertSame;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 
 public class LibraryTest {
     Library library;
-    ArrayList<Book> bookList = new ArrayList<>();
-    ArrayList<BookLibrary> bookLibraryList = new ArrayList<>();
+    ArrayList<Item> itemsList = new ArrayList<>();
+    ArrayList<ItemLibrary> itemsInLibrary = new ArrayList<>();
+
 
     @Before
     public void setUp() throws Exception {
 
+
+
         this.library = new Library();
 
-        Book book1 = new Book(new Name("BookName 1"), new PublicationYear(0001), new AuthorName("AuthorName1"));
-        Book book2 = new Book(new Name("BookName 2"), new PublicationYear(0002), new AuthorName("AuthorName2"));
-        bookList.add(book1);
-        bookList.add(book2);
+        Item book1 = new Book(new Name("In Search of Lost Time"), new PublicationYear(1913), new AuthorName("Marcel Proust"));
+        Item movie1 = new Movie(new Name("Mad Max"), new PublicationYear(2004), new DirectorName("George Miller"), 5);
 
-        BookLibrary bookLibrary1 = new BookLibrary(book1, true);
-        BookLibrary bookLibrary2 = new BookLibrary(book2, true);
-        bookLibraryList.add(bookLibrary1);
-        bookLibraryList.add(bookLibrary2);
+        itemsList.add(book1);
+        itemsList.add(movie1);
 
-        library.createBooksList(bookLibraryList);
+        itemsList.forEach(item -> {
+            itemsInLibrary.add(new ItemLibrary(item));
+        });
+
+        library.getItemsLibrary(itemsInLibrary);
+
      }
 
-    @Test (expected = NullPointerException.class)
-    public void shouldThrowsNullPointerExceptionWhenIndexPassedIsBiggerThanList(){
-        library.checkOutBook(bookLibraryList.size() + 1);
+
+    @Test
+    public void shouldPrinterOnlyListOfBookNames(){
+        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+
+        library.showAvailableBooksListInTheLibrary();
+
+        String expectedOutput = "In Search of Lost Time\n";
+        assertThat(outContent.toString(), is(expectedOutput));
+}
+    @Test
+    public void shouldPrinterOnlyListOfMovieNames(){
+        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+
+        library.showAvailableMoviesListInTheLibrary();
+
+        String expectedOutput = "Mad Max\n";
+        assertThat(outContent.toString(), is(expectedOutput));
     }
 
     @Test
-    public void shouldSetBookAsUnavailable(){
-        library.checkOutBook(1);
-        assertThat(bookLibraryList.get(1).isAvailable(), is(false));
+    public void shouldReturnTrueWhenItemAsFound(){
+        assertThat(library.checkoutItemInTheLibrary("Mad Max"), is (true));
+    }
+
+    @Test
+    public void shouldReturnFalseWhenItemAsNotFound(){
+        assertThat(library.checkoutItemInTheLibrary("Mad Maxxx"), is (false));
+    }
+
+    @Test
+    public void shouldReturnTrueWhenNameParameterIsEqualAndIsAvailable(){
+        assertThat(library.itemIsEqualNameParameterAndItemIsAvailableInLibrary(itemsInLibrary.get(1),"Mad Max") , is(true));
+    }
+
+    @Test
+    public void shouldReturnFalseWhenNameParameterIsEqualAndIsNotAvailable(){
+        itemsInLibrary.get(1).setIsNotAvailable();
+        assertThat(library.itemIsEqualNameParameterAndItemIsAvailableInLibrary(itemsInLibrary.get(1),"Mad Max") , is(false));
+    }
+
+    @Test
+    public void shouldReturnFalseWhenNameParameterisNotEqual(){
+        assertThat(library.itemIsEqualNameParameterAndItemIsAvailableInLibrary(itemsInLibrary.get(1),"Mad Maxx") , is(false));
     }
 
 
     @Test
-    public void shouldSetBookAsAvailable(){
-        library.checkInBook(1);
-        assertThat(bookLibraryList.get(1).isAvailable(), is(true));
+    public void shouldReturnTrueWhenNameParameterIsEqualAndItemIsNotAvailable(){
+        itemsInLibrary.get(1).setIsNotAvailable();
+        assertThat(library.itemIsEqualNameParameterAndItemIsNotAvailableInLibrary(itemsInLibrary.get(1),"Mad Max") , is(true));
     }
 
+    @Test
+    public void shouldReturnFalseWhenNameParameterIsEqualAndItemIsAvailable(){
+        assertThat(library.itemIsEqualNameParameterAndItemIsNotAvailableInLibrary(itemsInLibrary.get(1),"Mad Max") , is(false));
+    }
 
+    @Test
+    public void shouldReturnFalseWhenNameParameterisNotEqualInLibrary(){
+        assertThat(library.itemIsEqualNameParameterAndItemIsNotAvailableInLibrary(itemsInLibrary.get(1),"Mad Maxx") , is(false));
+    }
 
+    @Test
+    public void shouldReturnAvailableItemObjectPassedString() throws Exception {
+        assertSame(itemsInLibrary.get(1), library.getAvailableItemInLibrary("Mad Max"));
+    }
 
+    @Test
+    public void shouldReturnNullWhenAvailableItemObjectPassedStringIsNotFound() throws Exception {
+        assertNull(library.getAvailableItemInLibrary("Mad Maxxx"));
+    }
 
+    @Test
+    public void shouldReturnNotNullWhenAvailableItemObjectPassedStringIsFound() throws Exception {
+        assertNotNull(library.getAvailableItemInLibrary("Mad Max"));
+    }
 
+    @Test
+    public void shouldReturnUnAvailableItemObjectPassedString() throws Exception {
+        itemsInLibrary.get(1).setIsNotAvailable();
+        assertSame(itemsInLibrary.get(0), library.getUnAvailableItemInLibrary("Mad Max"));
+    }
 
+    @Test
+    public void shouldReturnNullWhenUAvailableItemObjectPassedStringIsNotFound() throws Exception {
+        itemsInLibrary.get(1).setIsNotAvailable();
+        assertNull(library.getAvailableItemInLibrary("Mad Maxxx"));
+    }
 
-
+    @Test
+    public void shouldReturnNotNullWhenUAvailableItemObjectPassedStringIsFound() throws Exception {
+        itemsInLibrary.get(1).setIsNotAvailable();
+        assertNotNull(library.getUnAvailableItemInLibrary("Mad Max"));
+    }
 
 
 
