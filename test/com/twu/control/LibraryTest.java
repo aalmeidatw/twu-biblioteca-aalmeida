@@ -147,6 +147,14 @@ public class LibraryTest {
         assertNotNull(library.getUnAvailableItemInLibrary("Mad Max"));
     }
 
+    @Test
+    public void shouldReturnTrueWhenItemUnAvailableIsFound(){
+        itemsInLibrary.get(1).setIsNotAvailable();
+        assertThat(library.checkInItemInTheLibrary("Mad Max"), is (true));
+    }
+
+
+
 
 
 

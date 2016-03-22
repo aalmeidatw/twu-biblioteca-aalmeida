@@ -29,7 +29,17 @@ public class Library {
         return false;
     }
 
-    
+    public boolean checkInItemInTheLibrary(String name){
+
+        if (getUnAvailableItemInLibrary(name) != null){
+
+            return true;
+        }
+        return false;
+
+    }
+
+
 
 
 
