@@ -1,9 +1,9 @@
 package com.twu.book;
 
-import com.twu.model.book.AuthorName;
-import com.twu.model.item.Name;
-import com.twu.model.item.PublicationYear;
-import com.twu.model.book.Book;
+import com.twu.types.book.AuthorName;
+import com.twu.types.item.Name;
+import com.twu.types.item.PublicationYear;
+import com.twu.types.book.Book;
 import org.junit.Before;
 import org.junit.Test;
 import static org.hamcrest.MatcherAssert.assertThat;

@@ -1,6 +1,6 @@
 package com.twu.control;
 
-import com.twu.model.item.Item;
+import com.twu.types.item.Item;
 
 
 
@@ -13,7 +13,7 @@ public class ItemLibrary {
         this.isAvailable = true;
     }
 
-    public  Item getItem(){
+    public Item getItem(){
         return this.item;
     }
 

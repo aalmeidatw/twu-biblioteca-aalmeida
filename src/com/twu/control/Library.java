@@ -2,9 +2,10 @@ package com.twu.control;
 
 
 
-import com.twu.model.book.Book;
-import com.twu.model.movie.Movie;
+import com.twu.types.book.Book;
+import com.twu.types.movie.Movie;
 import java.util.ArrayList;
+import java.util.Optional;
 
 
 public class Library {
@@ -38,14 +39,7 @@ public class Library {
             return true;
         }
         return false;
-
     }
-
-
-
-
-
-
 
     public void showAvailableMoviesListInTheLibrary(){
         itemsListInLibrary.stream().forEach(item ->{
@@ -65,12 +59,32 @@ public class Library {
 
     public ItemLibrary getAvailableItemInLibrary(String name) {
 
-      for (ItemLibrary itemLibrary : itemsListInLibrary){
-            if ( itemIsEqualNameParameterAndItemIsAvailableInLibrary(itemLibrary, name)  ){
-                return   itemLibrary;
-            }
-        }
+
+        // pq nao posso fazer isso?
+//        itemsListInLibrary.stream().findFirst(itemLib -> {
+//            if(itemLib.isAvailable()){
+//                return itemLib;
+//            }
+//        });
+//
+//
+//
+//      for (ItemLibrary itemLibrary : itemsListInLibrary){
+//            if ( itemIsEqualNameParameterAndItemIsAvailableInLibrary(itemLibrary, name)  ){
+//                return   itemLibrary;
+//            }
+//        }
+//        return null;
+
+        Optional<ItemLibrary> result = itemsListInLibrary
+                                            .stream()
+                                            .filter(item -> item.isAvailable())
+                                            .findFirst();
+        if (result.isPresent())
+            return result.get();
+
         return null;
+
     }
 
 
@@ -92,6 +106,7 @@ public class Library {
 
     }
 
+    // isItemAvailableToLend
     public boolean itemIsEqualNameParameterAndItemIsNotAvailableInLibrary(ItemLibrary itemLibrary, String name){
         return (  (itemLibrary.getItem().getName().equals(name) ) && (!itemLibrary.isAvailable()) );
 
