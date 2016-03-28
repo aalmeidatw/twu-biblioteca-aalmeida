@@ -1,7 +1,7 @@
 package com.twu.provider;
 
 
-import com.twu.control.ItemLibrary;
+import com.twu.types.library.ItemLibrary;
 import com.twu.types.book.AuthorName;
 import com.twu.types.book.Book;
 import com.twu.types.item.Item;

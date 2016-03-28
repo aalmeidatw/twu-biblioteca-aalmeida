@@ -3,6 +3,7 @@ package com.twu.control;
 import com.twu.types.item.Item;
 import com.twu.types.item.Name;
 import com.twu.types.item.PublicationYear;
+import com.twu.types.library.ItemLibrary;
 import org.junit.Before;
 import org.junit.Test;
 import static org.hamcrest.CoreMatchers.is;

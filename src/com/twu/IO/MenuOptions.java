@@ -6,31 +6,31 @@ import com.twu.provider.LibraryItem;
 public class MenuOptions {
     private Library library;
     private ScannerInputUser scannerInputUser;
-    private PrinterMessage printerMessage;
+    private MessagePrinter messagePrinter;
 
 
     public MenuOptions(){
         this.library = new Library();
-        library.getItemsLibrary(new LibraryItem().createItemListLibrary());
+        library.setLibraryItems(new LibraryItem().createItemListLibrary());
         this.scannerInputUser = new ScannerInputUser();
-        this.printerMessage = new PrinterMessage();
+        this.messagePrinter = new MessagePrinter();
      }
 
     public void menuOption(String option){
         switch (option){
 
             case "1":
-                printerMessage.printMessageOnConsole("List of Available Books! : ");
+                messagePrinter.printMessageOnConsole("List of Available Books! : ");
 
                 break;
 
 
              case "Q":
-                 printerMessage.printMessageOnConsole("Exit of System");
+                 messagePrinter.printMessageOnConsole("Exit of System");
                  break;
 
              default:
-                 printerMessage.printMessageOnConsole("Select a valid option!");
+                 messagePrinter.printMessageOnConsole("Select a valid option!");
                  break;
             }
     }

@@ -1,7 +1,7 @@
 package com.twu.IO;
 
 
-public class PrinterMessage {
+public class MessagePrinter {
 
     public final void welcomeMessage(){
         System.out.println("Welcome to Bangalore Public Library!");
