@@ -16,10 +16,10 @@ public class ManagementUser {
     public boolean loginUser(String userName, String password){
 
         return this.libraryUsers.stream()
-                   .anyMatch(user -> userIsRegistred(user, userName, password) );
+                   .anyMatch(user -> isUserRegistred(user, userName, password) );
     }
 
-    protected boolean userIsRegistred(User user, String userName, String password){
+    protected boolean isUserRegistred(User user, String userName, String password){
         return user.getUserName().equals(userName) && (user.isPasswordCorrect(password));
     }
 
@@ -29,11 +29,7 @@ public class ManagementUser {
                                         .stream()
                                         .filter(user -> user.getUserName().equals(userName) )
                                         .findFirst();
-        if(userResult.isPresent()){
-            return userResult.get();
-        }else{
-            return null;
-        }
+        return userResult.orElse(null);
     }
 
 }

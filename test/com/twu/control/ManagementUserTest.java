@@ -40,12 +40,12 @@ public class ManagementUserTest {
 
     @Test
     public void shouldReturnTrueWhenUserNameAndPasswordIsValid(){
-        assertThat(managementUser.userIsRegistred(managementUser.getUser(USER_NAME), USER_NAME, PASSWORD), is (true));
+        assertThat(managementUser.isUserRegistred(managementUser.getUser(USER_NAME), USER_NAME, PASSWORD), is (true));
     }
 
     @Test
     public void shouldReturnFalseWhenUserNameAndPasswordIsNotValid(){
-        assertThat(managementUser.userIsRegistred(managementUser.getUser(USER_NAME), USER_NAME_ERROR, PASSWORD), is (false));
+        assertThat(managementUser.isUserRegistred(managementUser.getUser(USER_NAME), USER_NAME_ERROR, PASSWORD), is (false));
     }
 
     @Test

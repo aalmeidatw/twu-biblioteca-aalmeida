@@ -28,21 +28,20 @@ public class Library {
     }
 
     public ItemLibrary getLibraryItem(String name) {
-        Optional<ItemLibrary> result = libraryItems
-                                        .stream()
-                                        .filter(item -> item.getItem().getName().equals(name))
-                                        .findFirst();
-
+        Optional<ItemLibrary> result = findLibraryItem(name);
         return result.orElse(null);
     }
 
     public boolean isItemAvailableToLend(String name){
-        Optional<ItemLibrary> result = libraryItems
-                                         .stream()
-                                         .filter(item -> compareItemName(item, name))
-                                         .findFirst();
-
+        Optional<ItemLibrary> result = findLibraryItem(name);
         return  result.isPresent() && result.get().isAvailable();
+    }
+
+    private Optional<ItemLibrary> findLibraryItem(String name) {
+        return libraryItems
+                .stream()
+                .filter(item -> compareItemName(item, name))
+                .findFirst();
     }
 
     private boolean compareItemName(ItemLibrary itemLibrary, String name){
