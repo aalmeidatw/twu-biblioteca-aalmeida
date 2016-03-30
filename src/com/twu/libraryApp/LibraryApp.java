@@ -11,18 +11,20 @@ public class LibraryApp {
         ScannerInputUser scannerInputUser = new ScannerInputUser();
         MenuOptions menu = new MenuOptions();
 
-
         String option;
         messagePrinter.welcomeMessage();
 
-        do {
-            messagePrinter.showMenuOptions();
-            option = scannerInputUser.getUserInfoScanner();
-            menu.menuOption(option);
+        if (menu.userLogin()) {
 
+            do {
+                messagePrinter.showMenuOptions();
+                option = scannerInputUser.getUserInfoScanner();
+                menu.menuOption(option);
 
-        }while (!option.equals("Q"));
+            } while (!option.equals("Q"));
+        } else {
+            messagePrinter.meessagePrinterOnConsole("LOGIN FAIL");
+        }
     }
-
 
 }

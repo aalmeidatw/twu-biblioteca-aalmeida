@@ -2,18 +2,15 @@ package com.twu.types.book;
 
 
 import com.twu.types.item.Item;
-import com.twu.types.item.Name;
+import com.twu.types.Name;
 import com.twu.types.item.PublicationYear;
 
 public class Book extends Item {
     private AuthorName authorName;
-    private String itemType;
-
 
     public Book (Name name, PublicationYear publicationYear, AuthorName authorName){
         super(name, publicationYear);
         this.authorName = authorName;
-        this.itemType = "Book";
     }
 
     public String getBookName(){

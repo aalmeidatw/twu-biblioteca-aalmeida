@@ -4,7 +4,6 @@ package com.twu.types.book;
 public class AuthorName {
     private String authorName;
 
-
     public AuthorName(String authorName){
         this.authorName = authorName;
     }

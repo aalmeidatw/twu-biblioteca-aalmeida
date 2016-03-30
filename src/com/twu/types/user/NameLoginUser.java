@@ -1,10 +1,10 @@
 package com.twu.types.user;
 
 
-public class UserName {
+public class NameLoginUser {
     private String name;
 
-    public UserName (String userName){
+    public NameLoginUser(String userName){
         this.name = userName;
     }
 

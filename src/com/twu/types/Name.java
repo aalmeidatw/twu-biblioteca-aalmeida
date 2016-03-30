@@ -1,4 +1,4 @@
-package com.twu.types.item;
+package com.twu.types;
 
 
 public class Name {

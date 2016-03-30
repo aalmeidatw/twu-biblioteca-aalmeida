@@ -2,8 +2,6 @@ package com.twu.types.library;
 
 import com.twu.types.item.Item;
 
-
-
 public class ItemLibrary {
     private Item item;
     private boolean isAvailable;
@@ -17,18 +15,13 @@ public class ItemLibrary {
         return this.item;
     }
 
-    public void setAvailable(){
-        this.isAvailable = true;
-    }
-
-    public void setIsNotAvailable(){
-        this.isAvailable = false;
+    public void modifyAvailableItemStatus(boolean status){
+        this.isAvailable = status;
     }
 
     public boolean isAvailable(){
         return this.isAvailable;
     }
-
 
     @Override
     public String toString() {

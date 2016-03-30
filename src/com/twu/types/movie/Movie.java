@@ -2,7 +2,7 @@ package com.twu.types.movie;
 
 
 import com.twu.types.item.Item;
-import com.twu.types.item.Name;
+import com.twu.types.Name;
 import com.twu.types.item.PublicationYear;
 
 public class Movie extends Item {

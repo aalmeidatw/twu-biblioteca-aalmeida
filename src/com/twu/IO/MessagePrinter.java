@@ -8,7 +8,7 @@ public class MessagePrinter {
         System.out.println("===================================");
     }
 
-    public final void printMessageOnConsole(String value){
+    public final void meessagePrinterOnConsole(String value){
         System.out.println(value);
     }
 

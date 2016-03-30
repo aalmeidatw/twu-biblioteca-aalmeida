@@ -1,5 +1,6 @@
 package com.twu.types.item;
 
+import com.twu.types.Name;
 
 public  class Item {
     private Name name;
@@ -17,8 +18,6 @@ public  class Item {
     public int getPublicationYear() {
         return publicationYear.getPublicationYear();
     }
-
-
 }
 
 

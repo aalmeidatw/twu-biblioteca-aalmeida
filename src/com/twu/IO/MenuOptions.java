@@ -1,7 +1,8 @@
 package com.twu.IO;
 
 import com.twu.control.Library;
-import com.twu.provider.LibraryItem;
+import com.twu.provider.LibraryItems;
+import com.twu.provider.LibraryUsers;
 
 public class MenuOptions {
     private Library library;
@@ -9,29 +10,40 @@ public class MenuOptions {
     private MessagePrinter messagePrinter;
 
 
-    public MenuOptions(){
-        this.library = new Library();
-        library.setLibraryItems(new LibraryItem().createItemListLibrary());
+    public MenuOptions() {
+        this.library = new Library(new LibraryItems().createItemListLibrary());
         this.scannerInputUser = new ScannerInputUser();
         this.messagePrinter = new MessagePrinter();
-     }
+    }
 
-    public void menuOption(String option){
-        switch (option){
+    public void menuOption(String option) {
+
+
+        switch (option) {
 
             case "1":
-                messagePrinter.printMessageOnConsole("List of Available Books! : ");
+                messagePrinter.meessagePrinterOnConsole("List of Available Books! : ");
 
                 break;
 
 
-             case "Q":
-                 messagePrinter.printMessageOnConsole("Exit of System");
-                 break;
+            case "Q":
+                messagePrinter.meessagePrinterOnConsole("Exit of System");
+                break;
 
-             default:
-                 messagePrinter.printMessageOnConsole("Select a valid option!");
-                 break;
-            }
+            default:
+                messagePrinter.meessagePrinterOnConsole("Select a valid option!");
+                break;
+        }
+
+        }
+
+
+
+    public boolean userLogin(){
+        return true;
+
+
+
     }
 }

@@ -1,7 +1,7 @@
 package com.twu.book;
 
 import com.twu.types.book.AuthorName;
-import com.twu.types.item.Name;
+import com.twu.types.Name;
 import com.twu.types.item.PublicationYear;
 import com.twu.types.book.Book;
 import org.junit.Before;
@@ -12,26 +12,31 @@ import static org.hamcrest.core.Is.is;
 
 public class BookTest {
     private Book myBook;
+    private static String BOOK_NAME = "O Vento";
+    private static int PUBLICATION_YEAR =  1980;
+    private static String AUTHOR_NAME = "João Simplicio";
+
 
     @Before
     public void setUp() throws Exception {
-         this.myBook = new Book(new Name("O Vento"), new PublicationYear(1980), new AuthorName("João Simplicio"));
-
+         this.myBook = new Book(new Name(BOOK_NAME),
+                                new PublicationYear(PUBLICATION_YEAR),
+                                new AuthorName(AUTHOR_NAME));
     }
 
     @Test
     public void shouldReturnBookName() throws Exception {
-        assertThat(myBook.getBookName(), is("O Vento"));
+        assertThat(myBook.getBookName(), is(BOOK_NAME));
     }
 
     @Test
     public void shouldReturnAuthorName() throws Exception {
-        assertThat(myBook.getAuthorName(), is("João Simplicio"));
+        assertThat(myBook.getAuthorName(), is(AUTHOR_NAME));
     }
 
     @Test
     public void shouldReturnPublicationYear() throws Exception {
-        assertThat(myBook.getPublicationYear(), is(1980));
+        assertThat(myBook.getPublicationYear(), is(PUBLICATION_YEAR));
     }
 
 }

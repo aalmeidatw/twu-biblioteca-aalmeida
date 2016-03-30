@@ -1,5 +1,6 @@
 package com.twu.types.user;
 
+import com.twu.types.Name;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -7,24 +8,31 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
 public class UserLoginTest {
-    private UserLogin userLogin;
-    private String USER_NAME = "user_01";
-    private String CORRECT_PASSWORD = "asdf-qwer";
-    private String ERROR_PASSWORD = "qwer-ssd";
+    private User user;
+    private static String NAME_OF_USER = "USER_NAME";
+    private static String USER_NAME = "user_01";
+    private static String EMAIL_USER = "email@user.com";
+    private static String CORRECT_PASSWORD = "asdf-qwer";
+    private static int PHONE_NUMBER = 12345678;
+    private static String ERROR_PASSWORD = "qwer-ssd";
 
 
     @Before
     public void setUp() throws Exception {
-        this.userLogin = new UserLogin(new UserName(USER_NAME), new UserPassword(CORRECT_PASSWORD));
+        this.user = new User( new Name(NAME_OF_USER),
+                              new NameLoginUser(USER_NAME),
+                              new PassWordUser(CORRECT_PASSWORD),
+                              new EmailUser(EMAIL_USER),
+                              new PhoneNumberUser(PHONE_NUMBER));
     }
 
     @Test
     public void shouldReturnTrueWhenPassWordPassedIsCorrect(){
-        assertThat(userLogin.passwordIsCorrect(CORRECT_PASSWORD), is (true));
+        assertThat(user.isPasswordCorrect(CORRECT_PASSWORD), is (true));
     }
 
     @Test
     public void shouldReturnTrueWhenPassWordPassedIsNotCorrect(){
-        assertThat(userLogin.passwordIsCorrect(ERROR_PASSWORD), is (false));
+        assertThat(user.isPasswordCorrect(ERROR_PASSWORD), is (false));
     }
 }

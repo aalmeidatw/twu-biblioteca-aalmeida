@@ -1,6 +1,6 @@
 package com.twu.types.movie;
 
-import com.twu.types.item.Name;
+import com.twu.types.Name;
 import com.twu.types.item.PublicationYear;
 import org.junit.Before;
 import org.junit.Test;
