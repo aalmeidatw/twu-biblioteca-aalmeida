@@ -2,6 +2,7 @@ package com.twu.control;
 
 
 
+import com.twu.types.book.Book;
 import com.twu.types.library.ItemLibrary;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +11,22 @@ import java.util.Optional;
 public class Library {
     private List<ItemLibrary> libraryItems = new ArrayList<>();
     private ManagementUser managementUser;
+
+
+
+    public List<ItemLibrary> returnBookList(){
+
+        List<ItemLibrary> libraryBooks = new ArrayList<>();
+
+        libraryItems.forEach(itemLibrary -> {
+                if(itemLibrary.getItem() instanceof Book){
+                    libraryBooks.add(itemLibrary);
+                }
+        });
+
+        return libraryBooks;
+
+    }
 
 
     public Library(List<ItemLibrary> libraryItems){
@@ -22,7 +39,7 @@ public class Library {
         item.modifyAvailableItemStatus(false);
     }
 
-    public void returnBorrowedItem(String name){
+    public void returnItem(String name){
         ItemLibrary item = getLibraryItem(name);
         item.modifyAvailableItemStatus(true);
     }
@@ -47,5 +64,6 @@ public class Library {
     private boolean compareItemName(ItemLibrary itemLibrary, String name){
         return itemLibrary.getItem().getName().equals(name);
     }
+
 
 }

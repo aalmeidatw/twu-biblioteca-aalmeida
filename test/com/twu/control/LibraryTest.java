@@ -1,10 +1,16 @@
 package com.twu.control;
 
 import com.twu.provider.LibraryItems;
+import com.twu.types.Name;
 import org.junit.Before;
 import org.junit.Test;
 import com.twu.types.library.ItemLibrary;
+
+import java.util.List;
+
+import static com.sun.jmx.snmp.ThreadContext.contains;
 import static junit.framework.TestCase.assertSame;
+import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertNull;
@@ -63,14 +69,20 @@ public class LibraryTest {
 
     @Test
     public void shouldSetMovieAsAvailablePassedMovieName(){
-        library.returnBorrowedItem(MOVIE_NAME);
+        library.returnItem(MOVIE_NAME);
         assertThat(library.isItemAvailableToLend(MOVIE_NAME), is(true));
     }
 
     @Test
     public void shouldSetBookAsAvailablePassedBookName(){
-        library.returnBorrowedItem(BOOK_NAME);
+        library.returnItem(BOOK_NAME);
         assertThat(library.isItemAvailableToLend(BOOK_NAME), is(true));
+    }
+
+    @Test
+    public void shouldReturnLibraryBookList(){
+        List<ItemLibrary> items = library.returnBookList();
+        assertThat(items.get(0).getItem().getName(), is(BOOK_NAME));
     }
 
 
