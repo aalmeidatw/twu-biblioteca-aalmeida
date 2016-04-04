@@ -1,10 +1,10 @@
 package com.twu.types.user;
 
 
-public class PassWordUser {
+public class PasswordUser {
     private String password;
 
-    public PassWordUser(String password){
+    public PasswordUser(String password){
         this.password = password;
     }
 

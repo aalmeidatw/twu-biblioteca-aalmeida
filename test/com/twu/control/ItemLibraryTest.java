@@ -35,7 +35,7 @@ public class ItemLibraryTest {
     }
 
     @Test
-    public void shoudReturnTrueWhenItemAsAvailable(){
+    public void shouldReturnTrueWhenItemAsAvailable(){
         assertThat(libraryItem.isAvailable(), is (true));
     }
 

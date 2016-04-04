@@ -1,15 +1,14 @@
 package com.twu.menu;
 
-
 import com.twu.IO.MessagePrinter;
 import com.twu.control.Library;
 
 
-public class MenuOption1 implements Menu {
+public class MenuOption2 implements Menu {
     private MessagePrinter messagePrinter;
     private Library library;
 
-    public MenuOption1(Library library) {
+    public MenuOption2(Library library) {
         this.messagePrinter = new MessagePrinter();
         this.library = library;
     }
@@ -17,10 +16,7 @@ public class MenuOption1 implements Menu {
     @Override
     public void execute() {
         messagePrinter.messagePrinterOnConsole("List of Available Books!  : ");
-        messagePrinter.printerListOfConsole(library.returnBookList());
+        messagePrinter.printerListOfConsole(library.returnMovieList());
+
     }
-
-
-
-
 }

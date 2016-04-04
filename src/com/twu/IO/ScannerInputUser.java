@@ -14,6 +14,10 @@ public class ScannerInputUser {
         return scanner.nextInt();
 
     }
+
+    public String getInputLoginUser(){
+        return scanner.next();
+    }
 }
 
 

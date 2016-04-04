@@ -5,7 +5,6 @@ package com.twu.control;
 import com.twu.types.book.Book;
 import com.twu.types.library.ItemLibrary;
 import com.twu.types.movie.Movie;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -13,7 +12,22 @@ import java.util.Optional;
 public class Library {
     private List<ItemLibrary> libraryItems = new ArrayList<>();
     private ManagementUser managementUser;
+    private boolean userAuthenticated;
 
+    public Library(List<ItemLibrary> libraryItems){
+        this.libraryItems = libraryItems;
+        this.managementUser = new ManagementUser();
+        this.userAuthenticated = false;
+    }
+
+
+    public boolean isUserAuthenticated(String user_name, String password){
+        return managementUser.loginUser(user_name, password);
+    }
+
+    public void setUserAuthenticated(boolean status){
+        this.userAuthenticated = status;
+    }
 
 
     public List<ItemLibrary> returnBookList(){
@@ -43,14 +57,6 @@ public class Library {
         return libraryMovies;
     }
 
-
-
-
-
-    public Library(List<ItemLibrary> libraryItems){
-        this.libraryItems = libraryItems;
-        this.managementUser = new ManagementUser();
-    }
 
     public void lendItem(String name){
         ItemLibrary item = getLibraryItem(name);

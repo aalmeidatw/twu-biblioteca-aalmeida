@@ -4,10 +4,11 @@ package com.twu.control;
 import com.twu.provider.LibraryUsers;
 import com.twu.types.user.User;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 public class ManagementUser {
-    private ArrayList<User> libraryUsers = new ArrayList<>();
+    private List<User> libraryUsers = new ArrayList<>();
 
     public ManagementUser(){
         this.libraryUsers = new LibraryUsers().createLibraryUsers();
@@ -20,16 +21,20 @@ public class ManagementUser {
     }
 
     protected boolean isUserRegistred(User user, String userName, String password){
-        return user.getUserName().equals(userName) && (user.isPasswordCorrect(password));
+        return isUserNameIsEqualUser(userName, user) && (user.isPasswordCorrect(password));
     }
 
     public User getUser(String userName){
 
         Optional<User> userResult = libraryUsers
                                         .stream()
-                                        .filter(user -> user.getUserName().equals(userName) )
+                                        .filter(user -> isUserNameIsEqualUser(userName, user))
                                         .findFirst();
         return userResult.orElse(null);
+    }
+
+    private boolean isUserNameIsEqualUser(String userName, User user) {
+        return user.getUserName().equals(userName);
     }
 
 }

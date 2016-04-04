@@ -2,6 +2,7 @@ package com.twu.control;
 
 import com.twu.provider.LibraryItems;
 import com.twu.types.Name;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import com.twu.types.library.ItemLibrary;
@@ -21,10 +22,15 @@ public class LibraryTest {
     private static String BOOK_NAME = "In Search of Lost Time";
     private static String BOOK_NAME_NOT_EXIST = "BookNotExist";
     private static String MOVIE_NAME = "Mad Max";
+    private static String USER_NAME = "name_user01";
+    private static String PASSWORD = "@qwer";
+    private static String ERROR_PASSWORD = "@qweAr";
+    private ManagementUser managementUser;
 
     @Before
     public void setUp() throws Exception {
         this.library = new Library(new LibraryItems().createItemListLibrary());
+        this.managementUser = new ManagementUser();
      }
 
     @Test
@@ -85,11 +91,20 @@ public class LibraryTest {
         assertThat(items.get(0).getItem().getName(), is(BOOK_NAME));
     }
 
-
     @Test
     public void shouldReturnLibraryMovieList(){
         List<ItemLibrary> items = library.returnMovieList();
         assertThat(items.get(0).getItem().getName(), is(MOVIE_NAME));
+    }
+
+    @Test
+    public void shouldReturnTrueWhenIsUserAuthenticated(){
+        assertThat(library.isUserAuthenticated(USER_NAME, PASSWORD), is(true));
+    }
+
+    @Test
+    public void shouldReturnFalseWhenIsUserIsNotAuthenticated(){
+        assertThat(library.isUserAuthenticated(USER_NAME, ERROR_PASSWORD), is(false));
     }
 
 

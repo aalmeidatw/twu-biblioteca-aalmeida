@@ -14,17 +14,25 @@ public class LibraryApp {
         String option;
         messagePrinter.welcomeMessage();
 
-        if (menu.userLogin()) {
 
-            do {
+        do {
                 messagePrinter.showMenuOptions();
                 option = scannerInputUser.getUserInfoScanner();
                 menu.menuOption(option);
 
             } while (!option.equals("Q"));
-        } else {
-            messagePrinter.meessagePrinterOnConsole("LOGIN FAIL");
-        }
+
+//        if (menu.isUserAuthenticated()) {
+//
+//            do {
+//                messagePrinter.showMenuOptions();
+//                option = scannerInputUser.getUserInfoScanner();
+//                menu.menuOption(option);
+//
+//            } while (!option.equals("Q"));
+//        } else {
+//            messagePrinter.messagePrinterOnConsole("LOGIN FAIL");
+//        }
     }
 
 }

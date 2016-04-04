@@ -21,7 +21,7 @@ public class UserLoginTest {
     public void setUp() throws Exception {
         this.user = new User( new Name(NAME_OF_USER),
                               new NameLoginUser(USER_NAME),
-                              new PassWordUser(CORRECT_PASSWORD),
+                              new PasswordUser(CORRECT_PASSWORD),
                               new EmailUser(EMAIL_USER),
                               new PhoneNumberUser(PHONE_NUMBER));
     }

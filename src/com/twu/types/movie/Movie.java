@@ -28,4 +28,12 @@ public class Movie extends Item {
     public int getRate() {
         return rate;
     }
+
+    public String toString(){
+        return  "Movie Name: " + super.getName() + "\n"
+                + "Director Name: "  + directorName.getDirectorName() + "\n"
+                +  "Publication Year: " + super.getPublicationYear()
+                + "\n\n";
+
+    }
 }

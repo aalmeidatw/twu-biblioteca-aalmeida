@@ -4,10 +4,11 @@ import com.twu.types.Name;
 import com.twu.types.user.*;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class LibraryUsers {
 
-    private ArrayList<User> libraryUsers = new ArrayList<>();
+    private List<User> libraryUsers = new ArrayList<>();
     private static String NAME = "name_user";
     private static String NAME_USER = "name_user01";
     private static String PASSWORD = "@qwer";
@@ -20,17 +21,17 @@ public class LibraryUsers {
     private static String EMAIL_2 = "user@provider.com";
     private static int PHONE_2 = 99553266;
 
-    public ArrayList<User> createLibraryUsers(){
+    public List<User> createLibraryUsers(){
 
         User user1 = new User(new Name(NAME),
                      new NameLoginUser(NAME_USER),
-                     new PassWordUser(PASSWORD),
+                     new PasswordUser(PASSWORD),
                      new EmailUser(EMAIL),
                      new PhoneNumberUser(PHONE));
 
         User user2 = new User(new Name(NAME_2),
                      new NameLoginUser(NAME_USER_2),
-                     new PassWordUser(PASSWORD_2),
+                     new PasswordUser(PASSWORD_2),
                      new EmailUser(EMAIL_2),
                      new PhoneNumberUser(PHONE_2));
 

@@ -1,6 +1,10 @@
 package com.twu.IO;
 
 
+import com.twu.types.library.ItemLibrary;
+import java.util.List;
+
+
 public class MessagePrinter {
 
     public final void welcomeMessage(){
@@ -8,7 +12,7 @@ public class MessagePrinter {
         System.out.println("===================================");
     }
 
-    public final void meessagePrinterOnConsole(String value){
+    public final void messagePrinterOnConsole(String value){
         System.out.println(value);
     }
 
@@ -21,6 +25,15 @@ public class MessagePrinter {
         System.out.println("-> Q: Quit System  ");
         System.out.println("-------> Type:  ");
     }
+
+
+    public final void  printerListOfConsole(List<ItemLibrary> list){
+
+        list.stream()
+                .forEach(itemLibrary -> {
+                    System.out.print(itemLibrary.getItem().toString());
+                });
+        }
 
 
 }
