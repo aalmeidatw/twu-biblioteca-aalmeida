@@ -4,6 +4,8 @@ package com.twu.control;
 
 import com.twu.types.book.Book;
 import com.twu.types.library.ItemLibrary;
+import com.twu.types.movie.Movie;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -25,8 +27,24 @@ public class Library {
         });
 
         return libraryBooks;
+   }
 
+
+    public List<ItemLibrary> returnMovieList(){
+
+        List<ItemLibrary> libraryMovies = new ArrayList<>();
+
+        libraryItems.forEach(itemLibrary -> {
+            if(itemLibrary.getItem() instanceof Movie){
+                libraryMovies.add(itemLibrary);
+            }
+        });
+
+        return libraryMovies;
     }
+
+
+
 
 
     public Library(List<ItemLibrary> libraryItems){

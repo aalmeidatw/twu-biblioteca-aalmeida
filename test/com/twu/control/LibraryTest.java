@@ -86,6 +86,13 @@ public class LibraryTest {
     }
 
 
+    @Test
+    public void shouldReturnLibraryMovieList(){
+        List<ItemLibrary> items = library.returnMovieList();
+        assertThat(items.get(0).getItem().getName(), is(MOVIE_NAME));
+    }
+
+
 
 
 
