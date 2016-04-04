@@ -15,27 +15,22 @@ public class MenuLogin implements Menu {
         this.messagePrinter = new MessagePrinter();
         this.library = library;
         this.scannerInputUser = new ScannerInputUser();
-
-    }
+     }
 
     @Override
     public void execute() {
-        String userName = " ";
-        String password = " ";
 
-        userName = getUserNameInput();
-
-        password = getPasswordInput();
+        String userName = getUserNameInput();
+        String password = getPasswordInput();
 
         setUserStatus(userName, password);
-
     }
 
     protected void setUserStatus(String userName, String password) {
         this.userAuthenticated = library.isUserAuthenticated(userName, password);
     }
 
-    private String getPasswordInput() {
+    protected String getPasswordInput() {
         String password;
 
         messagePrinter.messagePrinterOnConsole("PassWord : ");
@@ -44,7 +39,7 @@ public class MenuLogin implements Menu {
         return password;
     }
 
-    private String getUserNameInput() {
+    protected String getUserNameInput() {
         String userName;
 
         messagePrinter.messagePrinterOnConsole("UserName : ");
