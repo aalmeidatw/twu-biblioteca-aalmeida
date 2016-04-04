@@ -31,10 +31,9 @@ public class MenuLogin implements Menu {
     }
 
     protected String getPasswordInput() {
-        String password;
 
         messagePrinter.messagePrinterOnConsole("PassWord : ");
-        password = scannerInputUser.getInputLoginUser();
+        String password = scannerInputUser.getInputLoginUser();
 
         return password;
     }
