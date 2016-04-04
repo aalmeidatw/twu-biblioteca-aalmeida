@@ -39,10 +39,9 @@ public class MenuLogin implements Menu {
     }
 
     protected String getUserNameInput() {
-        String userName;
 
         messagePrinter.messagePrinterOnConsole("UserName : ");
-        userName = scannerInputUser.getInputLoginUser();
+        String userName = scannerInputUser.getInputLoginUser();
 
         return userName;
     }
