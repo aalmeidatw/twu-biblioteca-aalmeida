@@ -1,4 +1,4 @@
-package com.twu.control;
+package com.twu.types.library;
 
 import com.twu.types.item.Item;
 import com.twu.types.Name;

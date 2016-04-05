@@ -15,7 +15,7 @@ public class MenuOption2 implements Menu {
 
     @Override
     public void execute() {
-        messagePrinter.messagePrinterOnConsole("List of Available Books!  : ");
+        messagePrinter.messagePrinterOnConsole("List of Available Movies!  : ");
         messagePrinter.printerListOfConsole(library.returnMovieList());
 
     }

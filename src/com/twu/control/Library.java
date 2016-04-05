@@ -8,27 +8,22 @@ import com.twu.types.movie.Movie;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 public class Library {
     private List<ItemLibrary> libraryItems = new ArrayList<>();
     private ManagementUser managementUser;
-    private boolean userAuthenticated;
 
     public Library(List<ItemLibrary> libraryItems){
         this.libraryItems = libraryItems;
         this.managementUser = new ManagementUser();
-        this.userAuthenticated = false;
     }
 
 
     public boolean isUserAuthenticated(String user_name, String password){
         return managementUser.loginUser(user_name, password);
     }
-
-    public void setUserAuthenticated(boolean status){
-        this.userAuthenticated = status;
-    }
-
 
     public List<ItemLibrary> returnBookList(){
 
@@ -46,15 +41,9 @@ public class Library {
 
     public List<ItemLibrary> returnMovieList(){
 
-        List<ItemLibrary> libraryMovies = new ArrayList<>();
-
-        libraryItems.forEach(itemLibrary -> {
-            if(itemLibrary.getItem() instanceof Movie){
-                libraryMovies.add(itemLibrary);
-            }
-        });
-
-        return libraryMovies;
+      return libraryItems.stream()
+                            .filter(itemLibrary -> itemLibrary.getItem() instanceof Movie)
+                            .collect(Collectors.toList());
     }
 
 

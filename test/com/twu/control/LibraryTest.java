@@ -25,12 +25,11 @@ public class LibraryTest {
     private static String USER_NAME = "name_user01";
     private static String PASSWORD = "@qwer";
     private static String ERROR_PASSWORD = "@qweAr";
-    private ManagementUser managementUser;
+
 
     @Before
     public void setUp() throws Exception {
         this.library = new Library(new LibraryItems().createItemListLibrary());
-        this.managementUser = new ManagementUser();
      }
 
     @Test
@@ -45,6 +44,7 @@ public class LibraryTest {
 
     @Test
     public void shouldReturnFalseWhenItemAsNotAvailableToLend(){
+
         library.getLibraryItem(MOVIE_NAME).modifyAvailableItemStatus(false);
         assertThat(library.isItemAvailableToLend(MOVIE_NAME) , is(false));
     }
