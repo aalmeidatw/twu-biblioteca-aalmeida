@@ -1,6 +1,7 @@
 package com.twu.control;
 
 import com.twu.provider.LibraryItems;
+import com.twu.types.ItemType;
 import com.twu.types.Name;
 import org.junit.Assert;
 import org.junit.Before;
@@ -19,6 +20,7 @@ import static org.junit.Assert.assertNull;
 
 public class LibraryTest {
     private Library library;
+    private ItemType itemType;
     private static String BOOK_NAME = "In Search of Lost Time";
     private static String BOOK_NAME_NOT_EXIST = "BookNotExist";
     private static String MOVIE_NAME = "Mad Max";
@@ -85,17 +87,6 @@ public class LibraryTest {
         assertThat(library.isItemAvailableToLend(BOOK_NAME), is(true));
     }
 
-    @Test
-    public void shouldReturnLibraryBookList(){
-        List<ItemLibrary> items = library.returnBookList();
-        assertThat(items.get(0).getItem().getName(), is(BOOK_NAME));
-    }
-
-    @Test
-    public void shouldReturnLibraryMovieList(){
-        List<ItemLibrary> items = library.returnMovieList();
-        assertThat(items.get(0).getItem().getName(), is(MOVIE_NAME));
-    }
 
     @Test
     public void shouldReturnTrueWhenIsUserAuthenticated(){
@@ -105,6 +96,18 @@ public class LibraryTest {
     @Test
     public void shouldReturnFalseWhenIsUserIsNotAuthenticated(){
         assertThat(library.isUserAuthenticated(USER_NAME, ERROR_PASSWORD), is(false));
+    }
+
+    @Test
+    public void shouldReturnLibraryMovieList(){
+        List<ItemLibrary> items = library.returnItemList(ItemType.MOVIE);
+        assertThat(items.get(0).getItem().getName(), is(MOVIE_NAME));
+    }
+
+    @Test
+    public void shouldReturnLibraryBookList(){
+        List<ItemLibrary> items = library.returnItemList(ItemType.BOOK);
+        assertThat(items.get(0).getItem().getName(), is(BOOK_NAME));
     }
 
 

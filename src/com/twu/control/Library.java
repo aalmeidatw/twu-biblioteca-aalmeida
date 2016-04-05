@@ -2,13 +2,13 @@ package com.twu.control;
 
 
 
+import com.twu.types.ItemType;
 import com.twu.types.book.Book;
 import com.twu.types.library.ItemLibrary;
 import com.twu.types.movie.Movie;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 public class Library {
@@ -25,19 +25,29 @@ public class Library {
         return managementUser.loginUser(user_name, password);
     }
 
-    public List<ItemLibrary> returnBookList(){
+    public List<ItemLibrary> returnItemList(ItemType itemType){
+        if(itemType.equals(itemType.BOOK)){
+            return getBookList();
 
+        }else if(itemType.equals(itemType.MOVIE)){
+            return getMovieList();
+        }
+
+        return libraryItems;
+    }
+
+
+
+    private List<ItemLibrary> getBookList() {
         return libraryItems.stream()
                 .filter(itemLibrary -> itemLibrary.getItem() instanceof Book)
                 .collect(Collectors.toList());
-   }
+    }
 
-
-    public List<ItemLibrary> returnMovieList(){
-
-      return libraryItems.stream()
-                            .filter(itemLibrary -> itemLibrary.getItem() instanceof Movie)
-                            .collect(Collectors.toList());
+    private List<ItemLibrary> getMovieList() {
+        return libraryItems.stream()
+                              .filter(itemLibrary -> itemLibrary.getItem() instanceof Movie)
+                              .collect(Collectors.toList());
     }
 
 
