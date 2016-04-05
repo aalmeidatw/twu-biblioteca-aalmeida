@@ -27,15 +27,9 @@ public class Library {
 
     public List<ItemLibrary> returnBookList(){
 
-        List<ItemLibrary> libraryBooks = new ArrayList<>();
-
-        libraryItems.forEach(itemLibrary -> {
-                if(itemLibrary.getItem() instanceof Book){
-                    libraryBooks.add(itemLibrary);
-                }
-        });
-
-        return libraryBooks;
+        return libraryItems.stream()
+                .filter(itemLibrary -> itemLibrary.getItem() instanceof Book)
+                .collect(Collectors.toList());
    }
 
 
