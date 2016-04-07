@@ -1,4 +1,4 @@
-package com.twu.types;
+package com.twu.types.itemType;
 
 
 public enum ItemType {

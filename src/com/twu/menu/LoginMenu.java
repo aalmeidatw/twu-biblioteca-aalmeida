@@ -5,13 +5,13 @@ import com.twu.IO.MessagePrinter;
 import com.twu.IO.ScannerInputUser;
 import com.twu.control.Library;
 
-public class MenuLogin implements Menu {
+public class LoginMenu implements Menu {
     private MessagePrinter messagePrinter;
     private Library library;
     private ScannerInputUser scannerInputUser;
     private boolean userAuthenticated;
 
-    public MenuLogin(Library library) {
+    public LoginMenu(Library library) {
         this.messagePrinter = new MessagePrinter();
         this.library = library;
         this.scannerInputUser = new ScannerInputUser();
