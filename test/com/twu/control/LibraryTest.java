@@ -38,15 +38,14 @@ public class LibraryTest {
     }
 
     @Test
-    public void shouldReturnFalseWhenItemAsNotFound(){
-        assertThat(library.isItemAvailableToLend(BOOK_NAME_NOT_EXIST) , is(false));
+    public void shouldReturnFalseWhenItemAsNotAvailableToLend(){
+        library.lendItem(MOVIE_NAME);
+        assertThat(library.isItemAvailableToLend(MOVIE_NAME) , is(false));
     }
 
     @Test
-    public void shouldReturnFalseWhenItemAsNotAvailableToLend(){
-
-        library.getLibraryItem(MOVIE_NAME).modifyAvailableItemStatus(false);
-        assertThat(library.isItemAvailableToLend(MOVIE_NAME) , is(false));
+    public void shouldReturnFalseWhenItemAsNotFound(){
+        assertThat(library.isItemAvailableToLend(BOOK_NAME_NOT_EXIST) , is(false));
     }
 
     @Test
@@ -111,8 +110,26 @@ public class LibraryTest {
     public void shouldReturnUserPassedUserName(){
         this.user = library.getUser(USER_NAME);
         assertThat(user.getNameLogin(), is(USER_NAME));
+    }
 
+    @Test
+    public void shouldReturnTrueWhenItemTypeIsBook(){
+        assertThat(library.isBook(itemType.BOOK), is (true));
+    }
 
+    @Test
+    public void shouldReturnFalseWhenItemTypeIsNotBook(){
+        assertThat(library.isBook(itemType.MOVIE), is (false));
+    }
+
+    @Test
+    public void shouldReturnTrueWhenItemTypeIsMovie(){
+        assertThat(library.isMovie(itemType.MOVIE), is (true));
+    }
+
+    @Test
+    public void shouldReturnFalseWhenItemTypeIsNotMovie(){
+        assertThat(library.isMovie(itemType.BOOK), is (false));
     }
 
 

@@ -33,10 +33,10 @@ public class Library {
 
     public List<ItemLibrary> returnItemList(ItemType itemType){
 
-        if(isBook(itemType, itemType.BOOK)){
+        if(isBook(itemType)){
             return getBookList();
 
-        }else if(isMovie(itemType, itemType.MOVIE)){
+        }else if(isMovie(itemType)){
             return getMovieList();
         }
 
@@ -53,12 +53,12 @@ public class Library {
 
     }
 
-    private boolean isMovie(ItemType itemType, ItemType movie) {
-        return itemType.equals(movie);
+    protected boolean isMovie(ItemType itemType) {
+        return itemType.equals(ItemType.MOVIE);
     }
 
-    private boolean isBook(ItemType itemType, ItemType book) {
-        return isMovie(itemType, book);
+    protected boolean isBook(ItemType itemType) {
+        return itemType.equals(ItemType.BOOK);
     }
 
     private List<ItemLibrary> getBookList() {
@@ -72,7 +72,6 @@ public class Library {
                            .filter(itemLibrary -> itemLibrary.getItem() instanceof Movie)
                            .collect(Collectors.toList());
     }
-
 
     public void lendItem(String name){
         ItemLibrary item = getLibraryItem(name);
