@@ -17,6 +17,26 @@ public class User {
         this.phoneNumber = phoneNumber;
     }
 
+    public String getName() {
+        return name.getName();
+    }
+
+    public String getNameLogin() {
+        return nameLogin.getName();
+    }
+
+    public String getPassword() {
+        return password.getPassword();
+    }
+
+    public String getEmail() {
+        return email.getEmailUser();
+    }
+
+    public int getPhoneNumber() {
+        return phoneNumber.getPhone();
+    }
+
     public String getUserName (){
         return nameLogin.getName();
     }
@@ -27,8 +47,8 @@ public class User {
 
     @Override
     public String toString() {
-        return "Name : " + name.getName() +
-                "Email : " + email.getEmailUser() +
+        return "Name : " + name.getName()  + "\n"  +
+                "Email : " + email.getEmailUser()  + "\n" +
                 "Phone : " + phoneNumber.getPhone();
     }
 }

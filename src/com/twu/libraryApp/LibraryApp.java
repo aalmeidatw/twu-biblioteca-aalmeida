@@ -22,7 +22,7 @@ public class LibraryApp {
 
             } while (!option.equals("Q"));
 
-//        if (menu.isUserAuthenticated()) {
+//        if (menu.loginUser()) {
 //
 //            do {
 //                messagePrinter.showMenuOptions();

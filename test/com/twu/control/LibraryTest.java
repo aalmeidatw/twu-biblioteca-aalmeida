@@ -1,18 +1,15 @@
 package com.twu.control;
 
 import com.twu.provider.LibraryItems;
-import com.twu.types.ItemType;
-import com.twu.types.Name;
-import org.junit.Assert;
+import com.twu.types.itemType.ItemType;
+import com.twu.types.user.User;
 import org.junit.Before;
 import org.junit.Test;
 import com.twu.types.library.ItemLibrary;
 
 import java.util.List;
 
-import static com.sun.jmx.snmp.ThreadContext.contains;
 import static junit.framework.TestCase.assertSame;
-import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertNull;
@@ -21,6 +18,7 @@ import static org.junit.Assert.assertNull;
 public class LibraryTest {
     private Library library;
     private ItemType itemType;
+    private User user;
     private static String BOOK_NAME = "In Search of Lost Time";
     private static String BOOK_NAME_NOT_EXIST = "BookNotExist";
     private static String MOVIE_NAME = "Mad Max";
@@ -58,8 +56,7 @@ public class LibraryTest {
     }
 
     @Test
-    public void shouldReturnNullWhenUAvailableItemObjectPassedStringIsFound() throws Exception {
-        library.getLibraryItem(MOVIE_NAME).modifyAvailableItemStatus(false);
+    public void shouldReturnNullWhenBookNameIsNotFound() throws Exception {
         assertNull(library.getLibraryItem(BOOK_NAME_NOT_EXIST));
     }
 
@@ -90,12 +87,12 @@ public class LibraryTest {
 
     @Test
     public void shouldReturnTrueWhenIsUserAuthenticated(){
-        assertThat(library.isUserAuthenticated(USER_NAME, PASSWORD), is(true));
+        assertThat(library.loginUser(USER_NAME, PASSWORD), is(true));
     }
 
     @Test
     public void shouldReturnFalseWhenIsUserIsNotAuthenticated(){
-        assertThat(library.isUserAuthenticated(USER_NAME, ERROR_PASSWORD), is(false));
+        assertThat(library.loginUser(USER_NAME, ERROR_PASSWORD), is(false));
     }
 
     @Test
@@ -108,6 +105,14 @@ public class LibraryTest {
     public void shouldReturnLibraryBookList(){
         List<ItemLibrary> items = library.returnItemList(ItemType.BOOK);
         assertThat(items.get(0).getItem().getName(), is(BOOK_NAME));
+    }
+
+    @Test
+    public void shouldReturnUserPassedUserName(){
+        this.user = library.getUser(USER_NAME);
+        assertThat(user.getNameLogin(), is(USER_NAME));
+
+
     }
 
 

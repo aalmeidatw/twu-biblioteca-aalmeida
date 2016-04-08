@@ -2,7 +2,7 @@ package com.twu.menu;
 
 import com.twu.IO.MessagePrinter;
 import com.twu.control.Library;
-import com.twu.types.ItemType;
+import com.twu.types.itemType.ItemType;
 
 
 public class MovieListMenu implements Menu {

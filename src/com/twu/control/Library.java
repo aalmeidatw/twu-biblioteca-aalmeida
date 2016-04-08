@@ -2,10 +2,13 @@ package com.twu.control;
 
 
 
-import com.twu.types.ItemType;
+import com.twu.types.Name;
+import com.twu.types.itemType.ItemType;
 import com.twu.types.book.Book;
 import com.twu.types.library.ItemLibrary;
 import com.twu.types.movie.Movie;
+import com.twu.types.user.*;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -14,6 +17,9 @@ import java.util.stream.Collectors;
 public class Library {
     private List<ItemLibrary> libraryItems = new ArrayList<>();
     private ManagementUser managementUser;
+    private User userAuthenticated;
+
+
 
     public Library(List<ItemLibrary> libraryItems){
         this.libraryItems = libraryItems;
@@ -21,33 +27,50 @@ public class Library {
     }
 
 
-    public boolean isUserAuthenticated(String user_name, String password){
+    public boolean loginUser(String user_name, String password){
         return managementUser.loginUser(user_name, password);
     }
 
     public List<ItemLibrary> returnItemList(ItemType itemType){
-        if(itemType.equals(itemType.BOOK)){
+
+        if(isBook(itemType, itemType.BOOK)){
             return getBookList();
 
-        }else if(itemType.equals(itemType.MOVIE)){
+        }else if(isMovie(itemType, itemType.MOVIE)){
             return getMovieList();
         }
 
         return libraryItems;
     }
 
+    public void setUserAuthenticated(User user){
+        this.userAuthenticated = new User(new Name(user.getName()),
+                                new NameLoginUser(user.getUserName()),
+                                new PasswordUser(user.getPassword()),
+                                new EmailUser(user.getEmail()),
+                                new PhoneNumberUser(user.getPhoneNumber())
+        );
 
+    }
+
+    private boolean isMovie(ItemType itemType, ItemType movie) {
+        return itemType.equals(movie);
+    }
+
+    private boolean isBook(ItemType itemType, ItemType book) {
+        return isMovie(itemType, book);
+    }
 
     private List<ItemLibrary> getBookList() {
         return libraryItems.stream()
-                .filter(itemLibrary -> itemLibrary.getItem() instanceof Book)
-                .collect(Collectors.toList());
+                           .filter(itemLibrary -> itemLibrary.getItem() instanceof Book)
+                           .collect(Collectors.toList());
     }
 
     private List<ItemLibrary> getMovieList() {
         return libraryItems.stream()
-                              .filter(itemLibrary -> itemLibrary.getItem() instanceof Movie)
-                              .collect(Collectors.toList());
+                           .filter(itemLibrary -> itemLibrary.getItem() instanceof Movie)
+                           .collect(Collectors.toList());
     }
 
 
@@ -61,7 +84,7 @@ public class Library {
         item.modifyAvailableItemStatus(true);
     }
 
-    public ItemLibrary getLibraryItem(String name) {
+    protected ItemLibrary getLibraryItem(String name) {
         Optional<ItemLibrary> result = findLibraryItem(name);
         return result.orElse(null);
     }
@@ -80,6 +103,17 @@ public class Library {
 
     private boolean compareItemName(ItemLibrary itemLibrary, String name){
         return itemLibrary.getItem().getName().equals(name);
+    }
+
+    public String getUserInfo(){
+        return userAuthenticated.getName() + " \n" +
+                userAuthenticated.getUserName() + " \n" +
+                userAuthenticated.getEmail() + " \n" +
+                userAuthenticated.getPhoneNumber() + " \n";
+    }
+
+    public User getUser(String userName){
+        return managementUser.getUser(userName);
     }
 
 

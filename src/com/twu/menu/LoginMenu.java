@@ -10,6 +10,8 @@ public class LoginMenu implements Menu {
     private Library library;
     private ScannerInputUser scannerInputUser;
     private boolean userAuthenticated;
+    private static boolean AUTHENTICATED = true;
+    private static boolean NOT_AUTHENTICATED = false;
 
     public LoginMenu(Library library) {
         this.messagePrinter = new MessagePrinter();
@@ -19,7 +21,6 @@ public class LoginMenu implements Menu {
 
     @Override
     public void execute() {
-
         String userName = getUserNameInput();
         String password = getPasswordInput();
 
@@ -27,11 +28,15 @@ public class LoginMenu implements Menu {
     }
 
     protected void setUserStatus(String userName, String password) {
-        this.userAuthenticated = library.isUserAuthenticated(userName, password);
+
+        if (library.loginUser(userName, password)){
+            this.userAuthenticated = AUTHENTICATED;
+            library.setUserAuthenticated(library.getUser(userName));
+        } else
+            this.userAuthenticated = NOT_AUTHENTICATED;
     }
 
     protected String getPasswordInput() {
-
         messagePrinter.messagePrinterOnConsole("PassWord : ");
         String password = scannerInputUser.getInputLoginUser();
 
@@ -39,7 +44,6 @@ public class LoginMenu implements Menu {
     }
 
     protected String getUserNameInput() {
-
         messagePrinter.messagePrinterOnConsole("UserName : ");
         String userName = scannerInputUser.getInputLoginUser();
 

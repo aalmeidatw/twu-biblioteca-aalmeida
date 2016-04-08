@@ -9,7 +9,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class MenuLoginTest {
-    private MenuLogin menuLogin;
+    private LoginMenu loginMenu;
     private Library library;
     private static String USER_NAME = "name_user01";
     private static String PASSWORD = "@qwer";
@@ -19,19 +19,19 @@ public class MenuLoginTest {
     @Before
     public void setUp() throws Exception {
         this.library = new Library(new LibraryItems().createItemListLibrary());
-        this.menuLogin = new MenuLogin(library);
+        this.loginMenu = new LoginMenu(library);
 
     }
 
     @Test
     public void shoudReturnTrueWhenUserAsAuthenticated() throws Exception {
-        menuLogin.setUserStatus(USER_NAME, PASSWORD);
-        assertThat(menuLogin.isUserAuthenticated(), is(true));
+        loginMenu.setUserStatus(USER_NAME, PASSWORD);
+        assertThat(loginMenu.isUserAuthenticated(), is(true));
     }
 
     @Test
     public void shoudReturnTrueWhenUserAsNotAuthenticated() throws Exception {
-        menuLogin.setUserStatus(USER_NAME, ERROR_PASSWORD);
-        assertThat(menuLogin.isUserAuthenticated(), is(false));
+        loginMenu.setUserStatus(USER_NAME, ERROR_PASSWORD);
+        assertThat(loginMenu.isUserAuthenticated(), is(false));
     }
 }

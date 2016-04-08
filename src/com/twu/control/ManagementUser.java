@@ -21,20 +21,26 @@ public class ManagementUser {
     }
 
     protected boolean isUserRegistred(User user, String userName, String password){
-        return isUserNameIsEqualUser(userName, user) && (user.isPasswordCorrect(password));
+        return isUserNameIsEqualUser(user, userName) && (isPasswordIsEqualPasswordUser(user, password));
     }
 
     public User getUser(String userName){
 
         Optional<User> userResult = libraryUsers
                                         .stream()
-                                        .filter(user -> isUserNameIsEqualUser(userName, user))
+                                        .filter(user -> isUserNameIsEqualUser(user, userName))
                                         .findFirst();
         return userResult.orElse(null);
     }
 
-    private boolean isUserNameIsEqualUser(String userName, User user) {
+    private boolean isUserNameIsEqualUser(User user, String userName) {
         return user.getUserName().equals(userName);
     }
+
+    private boolean isPasswordIsEqualPasswordUser(User user, String password){
+        return user.getPassword().equals(password);
+
+    }
+
 
 }
