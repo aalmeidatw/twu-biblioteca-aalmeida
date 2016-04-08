@@ -45,12 +45,11 @@ public class Library {
 
     public void setUserAuthenticated(User user){
         this.userAuthenticated = new User(new Name(user.getName()),
-                                new NameLoginUser(user.getUserName()),
-                                new PasswordUser(user.getPassword()),
-                                new EmailUser(user.getEmail()),
-                                new PhoneNumberUser(user.getPhoneNumber())
+                                 new NameLoginUser(user.getUserName()),
+                                 new PasswordUser(user.getPassword()),
+                                 new EmailUser(user.getEmail()),
+                                 new PhoneNumberUser(user.getPhoneNumber())
         );
-
     }
 
     protected boolean isMovie(ItemType itemType) {

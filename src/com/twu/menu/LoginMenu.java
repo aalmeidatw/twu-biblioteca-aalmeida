@@ -38,16 +38,12 @@ public class LoginMenu implements Menu {
 
     protected String getPasswordInput() {
         messagePrinter.messagePrinterOnConsole("PassWord : ");
-        String password = scannerInputUser.getInputLoginUser();
-
-        return password;
+        return scannerInputUser.getInputLoginUser();
     }
 
     protected String getUserNameInput() {
         messagePrinter.messagePrinterOnConsole("UserName : ");
-        String userName = scannerInputUser.getInputLoginUser();
-
-        return userName;
+        return  scannerInputUser.getInputLoginUser();
     }
 
     public boolean isUserAuthenticated() {
