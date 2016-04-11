@@ -18,8 +18,9 @@ public class MessagePrinter {
 
     public final void showMenuOptions() {
         System.out.println("\n\n ");
-        System.out.println("-> 1: List of available books ");
+        System.out.println("-> 1: List of available Books ");
         System.out.println("-> 2: List of available Movies ");
+        System.out.println("-> 3: Show All itens to Return  ");
         System.out.println("-> 3: Lend Item a Library  ");
         System.out.println("-> 4: Return Item a Library ");
         System.out.println("-> 9: Show my user info ");

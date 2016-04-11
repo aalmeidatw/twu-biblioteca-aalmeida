@@ -2,8 +2,10 @@ package com.twu.control;
 
 
 
+import com.sun.org.apache.bcel.internal.generic.FADD;
 import com.twu.exception.ErrorNameException;
 import com.twu.types.Name;
+import com.twu.types.item.Item;
 import com.twu.types.itemType.ItemType;
 import com.twu.types.book.Book;
 import com.twu.types.library.ItemLibrary;
@@ -54,6 +56,7 @@ public class Library {
         );
     }
 
+
     protected boolean isMovie(ItemType itemType) {
         return itemType.equals(ItemType.MOVIE);
     }
@@ -67,6 +70,13 @@ public class Library {
                            .filter(itemLibrary -> itemLibrary.getItem() instanceof Book)
                            .collect(Collectors.toList());
     }
+
+    public List<ItemLibrary> getAllItemsToReturn(){
+        return  libraryItems.stream()
+                .filter(itemLibrary -> itemLibrary.isAvailable() == false)
+                .collect(Collectors.toList());
+    }
+
 
     private List<ItemLibrary> getMovieList() {
         return libraryItems.stream()
