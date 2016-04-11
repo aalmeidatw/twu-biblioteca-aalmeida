@@ -4,6 +4,7 @@ import com.twu.exception.ErrorNameException;
 import com.twu.provider.LibraryItems;
 import com.twu.types.itemType.ItemType;
 import com.twu.types.user.User;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import com.twu.types.library.ItemLibrary;
@@ -131,6 +132,15 @@ public class LibraryTest {
     @Test
     public void shouldReturnFalseWhenItemTypeIsNotMovie(){
         assertThat(library.isMovie(itemType.BOOK), is (false));
+    }
+
+    @Test
+    public void shouldReturnItemListOfReturn() throws Exception {
+        library.lendItem(MOVIE_NAME);
+        List<ItemLibrary> returnList = library.getAllItemsToReturn();
+
+        assertThat(returnList.get(0).getItem().getName(), is(MOVIE_NAME));
+
     }
 
 
