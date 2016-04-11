@@ -13,16 +13,13 @@ public class MenuOptions {
     private LoginMenu loginMenu;
     private ReturnItemMenu returnItemMenu;
     private UserInfoMenu userInfoMenu;
+    private ShowAllItemMenu showAllItemMenu;
 
     public MenuOptions() {
         this.library = new Library(new LibraryItems().createItemListLibrary());
         this.scannerInputUser = new ScannerInputUser();
         this.messagePrinter = new MessagePrinter();
-        this.bookListMenu = new BookListMenu(library);
-        this.movieListMenu = new MovieListMenu(library);
-        this.loginMenu = new LoginMenu(library);
-        this.returnItemMenu = new ReturnItemMenu(library);
-        this.userInfoMenu = new UserInfoMenu(library);
+        initMenuOption(library);
     }
 
     public void menuOption(String option) {
@@ -39,6 +36,7 @@ public class MenuOptions {
                 break;
 
             case "3":
+                showAllItemMenu.execute();
 
                 break;
 
@@ -61,7 +59,17 @@ public class MenuOptions {
                 break;
         }
 
-        }
+    }
+
+    private void initMenuOption(Library library){
+        this.bookListMenu = new BookListMenu(library);
+        this.movieListMenu = new MovieListMenu(library);
+        this.loginMenu = new LoginMenu(library);
+        this.returnItemMenu = new ReturnItemMenu(library);
+        this.userInfoMenu = new UserInfoMenu(library);
+        this.showAllItemMenu = new ShowAllItemMenu(library);
+
+    }
 
 
 
