@@ -14,11 +14,12 @@ public class MenuOptions {
     private ReturnItemMenu returnItemMenu;
     private UserInfoMenu userInfoMenu;
     private ShowAllItemMenu showAllItemMenu;
+    private LendItemMenu lendItemMenu;
 
-    public MenuOptions() {
+    public MenuOptions(ScannerInputUser scannerInputUser, MessagePrinter messagePrinter) {
         this.library = new Library(new LibraryItems().createItemListLibrary());
-        this.scannerInputUser = new ScannerInputUser();
-        this.messagePrinter = new MessagePrinter();
+        this.scannerInputUser = scannerInputUser;
+        this.messagePrinter = messagePrinter;
         initMenuOption(library);
     }
 
@@ -36,9 +37,8 @@ public class MenuOptions {
                 break;
 
             case "3":
-                showAllItemMenu.execute();
-
-                break;
+                lendItemMenu.execute();
+            break;
 
             case "4":
                 returnItemMenu.execute();
@@ -68,6 +68,7 @@ public class MenuOptions {
         this.returnItemMenu = new ReturnItemMenu(library);
         this.userInfoMenu = new UserInfoMenu(library);
         this.showAllItemMenu = new ShowAllItemMenu(library);
+        this.lendItemMenu = new LendItemMenu(library);
 
     }
 

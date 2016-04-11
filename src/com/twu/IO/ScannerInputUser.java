@@ -10,6 +10,10 @@ public class ScannerInputUser {
         return scanner.nextLine().toUpperCase();
     }
 
+    public String getNameItemScanner(){
+        return scanner.nextLine();
+    }
+
     public int getInputIndex(){
         return scanner.nextInt();
 

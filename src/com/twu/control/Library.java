@@ -2,10 +2,9 @@ package com.twu.control;
 
 
 
-import com.sun.org.apache.bcel.internal.generic.FADD;
+
 import com.twu.exception.ErrorNameException;
 import com.twu.types.Name;
-import com.twu.types.item.Item;
 import com.twu.types.itemType.ItemType;
 import com.twu.types.book.Book;
 import com.twu.types.library.ItemLibrary;
@@ -21,30 +20,25 @@ public class Library {
     private List<ItemLibrary> libraryItems = new ArrayList<>();
     private ManagementUser managementUser;
     private User userAuthenticated;
-    private static String ERROR_NAME_EXCEPTION = "Name Not Found - Try Again!";
-
-
+    private static String ERROR_NAME_EXCEPTION = "ItemName Not Found - Try Again!";
 
     public Library(List<ItemLibrary> libraryItems){
         this.libraryItems = libraryItems;
         this.managementUser = new ManagementUser();
     }
 
-
     public boolean loginUser(String user_name, String password){
         return managementUser.loginUser(user_name, password);
     }
 
     public List<ItemLibrary> returnItemList(ItemType itemType){
-
-        if(isBook(itemType)){
-            return getBookList();
+         if(isBook(itemType)){
+            return getAvailableBooks();
 
         }else if(isMovie(itemType)){
-            return getMovieList();
+            return getAvailableMovies();
         }
-
-        return libraryItems;
+        return null;
     }
 
     public void setUserAuthenticated(User user){
@@ -65,10 +59,24 @@ public class Library {
         return itemType.equals(ItemType.BOOK);
     }
 
-    private List<ItemLibrary> getBookList() {
+    private List<ItemLibrary> getAvailableBooks() {
         return libraryItems.stream()
-                           .filter(itemLibrary -> itemLibrary.getItem() instanceof Book)
+                           .filter(itemLibrary -> isItemIsBookAndAvailableToLend(itemLibrary))
                            .collect(Collectors.toList());
+    }
+
+    private List<ItemLibrary> getAvailableMovies() {
+        return libraryItems.stream()
+                           .filter(itemLibrary -> isItemIsMovieAndAvailableToLend(itemLibrary))
+                           .collect(Collectors.toList());
+    }
+
+    private boolean isItemIsMovieAndAvailableToLend(ItemLibrary itemLibrary){
+        return itemLibrary.getItem() instanceof Movie && itemLibrary.isAvailable();
+    }
+
+    private boolean isItemIsBookAndAvailableToLend(ItemLibrary itemLibrary){
+        return itemLibrary.getItem() instanceof Book && itemLibrary.isAvailable();
     }
 
     public List<ItemLibrary> getAllItemsToReturn(){
@@ -77,24 +85,14 @@ public class Library {
                 .collect(Collectors.toList());
     }
 
-
-    private List<ItemLibrary> getMovieList() {
-        return libraryItems.stream()
-                           .filter(itemLibrary -> itemLibrary.getItem() instanceof Movie)
-                           .collect(Collectors.toList());
-    }
-
     public void lendItem(String name) throws Exception{
+
         ItemLibrary item = getLibraryItem(name);
 
         if(item != null){
             item.modifyAvailableItemStatus(false);
         }else
             throw new ErrorNameException(ERROR_NAME_EXCEPTION);
-
-
-
-        item.modifyAvailableItemStatus(false);
     }
 
     public void returnItem(String name) throws Exception{
@@ -107,13 +105,9 @@ public class Library {
     }
 
     protected ItemLibrary getLibraryItem(String name) {
+
         Optional<ItemLibrary> result = findLibraryItem(name);
         return result.orElse(null);
-    }
-
-    public boolean isItemAvailableToLend(String name){
-        Optional<ItemLibrary> result = findLibraryItem(name);
-        return  result.isPresent() && result.get().isAvailable();
     }
 
     private Optional<ItemLibrary> findLibraryItem(String name) {

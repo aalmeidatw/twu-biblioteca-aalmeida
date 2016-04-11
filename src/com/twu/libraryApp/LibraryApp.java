@@ -9,7 +9,7 @@ public class LibraryApp {
 
         MessagePrinter messagePrinter = new MessagePrinter();
         ScannerInputUser scannerInputUser = new ScannerInputUser();
-        MenuOptions menu = new MenuOptions();
+        MenuOptions menu = new MenuOptions(scannerInputUser, messagePrinter);
 
         String option;
         messagePrinter.welcomeMessage();

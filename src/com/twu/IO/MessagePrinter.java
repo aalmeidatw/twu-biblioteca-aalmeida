@@ -20,11 +20,12 @@ public class MessagePrinter {
         System.out.println("\n\n ");
         System.out.println("-> 1: List of available Books ");
         System.out.println("-> 2: List of available Movies ");
-        System.out.println("-> 3: Show All itens to Return  ");
-        System.out.println("-> 3: Lend Item a Library  ");
-        System.out.println("-> 4: Return Item a Library ");
-        System.out.println("-> 9: Show my user info ");
-        System.out.println("-> Q: Quit System  ");
+        System.out.println("-> 3: Lend Item ");
+        System.out.println("-> 4: Show All itens to Return  ");
+//        System.out.println("-> 4: Lend Item a Library  ");
+//        System.out.println("-> 5: Return Item a Library ");
+//        System.out.println("-> 9: Show my user info ");
+//        System.out.println("-> Q: Quit System  ");
         System.out.println("-------> Type:  ");
     }
 

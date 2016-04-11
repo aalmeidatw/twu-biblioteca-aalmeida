@@ -34,57 +34,18 @@ public class LibraryTest {
         this.library = new Library(new LibraryItems().createItemListLibrary());
      }
 
-    @Test
-    public void shouldReturnTrueWhenItemAsAvailableToLend(){
-        assertThat(library.isItemAvailableToLend(BOOK_NAME) , is(true));
-    }
 
-    @Test
-    public void shouldReturnFalseWhenItemAsNotAvailableToLend() throws Exception{
-        library.lendItem(MOVIE_NAME);
-        assertThat(library.isItemAvailableToLend(MOVIE_NAME) , is(false));
-    }
-
-    @Test
-    public void shouldReturnFalseWhenItemAsNotFound(){
-        assertThat(library.isItemAvailableToLend(BOOK_NAME_NOT_EXIST) , is(false));
-    }
 
     @Test
     public void shouldReturnItemWhenPassedItemName(){
-        ItemLibrary expected = library.getLibraryItem(BOOK_NAME);
-        assertSame(library.getLibraryItem(BOOK_NAME), expected);
+        ItemLibrary item = library.getLibraryItem(MOVIE_NAME);
+        assertThat(item.getItem().getName(), is(MOVIE_NAME));
     }
 
     @Test
     public void shouldReturnNullWhenBookNameIsNotFound() throws Exception {
         assertNull(library.getLibraryItem(BOOK_NAME_NOT_EXIST));
     }
-
-    @Test
-    public void shouldLendItemPassedBookName()throws Exception {
-        library.lendItem(BOOK_NAME);
-        assertThat(library.isItemAvailableToLend(BOOK_NAME), is(false));
-    }
-
-    @Test
-    public void shouldLendItemPassedMovieName()throws Exception{
-        library.lendItem(MOVIE_NAME);
-        assertThat(library.isItemAvailableToLend(MOVIE_NAME), is(false));
-    }
-
-    @Test
-    public void shouldSetMovieAsAvailablePassedMovieName() throws Exception {
-        library.returnItem(MOVIE_NAME);
-        assertThat(library.isItemAvailableToLend(MOVIE_NAME), is(true));
-    }
-
-    @Test
-    public void shouldSetBookAsAvailablePassedBookName() throws  Exception{
-        library.returnItem(BOOK_NAME);
-        assertThat(library.isItemAvailableToLend(BOOK_NAME), is(true));
-    }
-
 
     @Test
     public void shouldReturnTrueWhenIsUserAuthenticated(){
