@@ -2,6 +2,7 @@ package com.twu.control;
 
 
 
+import com.twu.exception.ErrorNameException;
 import com.twu.types.Name;
 import com.twu.types.itemType.ItemType;
 import com.twu.types.book.Book;
@@ -18,6 +19,7 @@ public class Library {
     private List<ItemLibrary> libraryItems = new ArrayList<>();
     private ManagementUser managementUser;
     private User userAuthenticated;
+    private static String ERROR_NAME_EXCEPTION = "Name Not Found - Try Again!";
 
 
 
@@ -72,14 +74,26 @@ public class Library {
                            .collect(Collectors.toList());
     }
 
-    public void lendItem(String name){
+    public void lendItem(String name) throws Exception{
         ItemLibrary item = getLibraryItem(name);
+
+        if(item != null){
+            item.modifyAvailableItemStatus(false);
+        }else
+            throw new ErrorNameException(ERROR_NAME_EXCEPTION);
+
+
+
         item.modifyAvailableItemStatus(false);
     }
 
-    public void returnItem(String name){
+    public void returnItem(String name) throws Exception{
         ItemLibrary item = getLibraryItem(name);
-        item.modifyAvailableItemStatus(true);
+
+        if (item != null ) {
+            item.modifyAvailableItemStatus(true);
+        }else
+            throw new ErrorNameException(ERROR_NAME_EXCEPTION);
     }
 
     protected ItemLibrary getLibraryItem(String name) {

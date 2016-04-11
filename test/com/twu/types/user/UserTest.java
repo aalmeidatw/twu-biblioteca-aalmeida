@@ -8,7 +8,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class UserTest {
     private static String USER_NAME = "name_user01";
-    private static String PASSWORD = "@qwer";
+    private static String PASSWORD = "1111";
     private static String ERROR_PASSWORD = "asdf";
     private ManagementUser managementUser;
 

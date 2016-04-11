@@ -1,5 +1,6 @@
 package com.twu.control;
 
+import com.twu.exception.ErrorNameException;
 import com.twu.provider.LibraryItems;
 import com.twu.types.itemType.ItemType;
 import com.twu.types.user.User;
@@ -23,7 +24,7 @@ public class LibraryTest {
     private static String BOOK_NAME_NOT_EXIST = "BookNotExist";
     private static String MOVIE_NAME = "Mad Max";
     private static String USER_NAME = "name_user01";
-    private static String PASSWORD = "@qwer";
+    private static String PASSWORD = "1111";
     private static String ERROR_PASSWORD = "@qweAr";
 
 
@@ -38,7 +39,7 @@ public class LibraryTest {
     }
 
     @Test
-    public void shouldReturnFalseWhenItemAsNotAvailableToLend(){
+    public void shouldReturnFalseWhenItemAsNotAvailableToLend() throws Exception{
         library.lendItem(MOVIE_NAME);
         assertThat(library.isItemAvailableToLend(MOVIE_NAME) , is(false));
     }
@@ -60,25 +61,25 @@ public class LibraryTest {
     }
 
     @Test
-    public void shouldLendItemPassedBookName(){
+    public void shouldLendItemPassedBookName()throws Exception {
         library.lendItem(BOOK_NAME);
         assertThat(library.isItemAvailableToLend(BOOK_NAME), is(false));
     }
 
     @Test
-    public void shouldLendItemPassedMovieName(){
+    public void shouldLendItemPassedMovieName()throws Exception{
         library.lendItem(MOVIE_NAME);
         assertThat(library.isItemAvailableToLend(MOVIE_NAME), is(false));
     }
 
     @Test
-    public void shouldSetMovieAsAvailablePassedMovieName(){
+    public void shouldSetMovieAsAvailablePassedMovieName() throws Exception {
         library.returnItem(MOVIE_NAME);
         assertThat(library.isItemAvailableToLend(MOVIE_NAME), is(true));
     }
 
     @Test
-    public void shouldSetBookAsAvailablePassedBookName(){
+    public void shouldSetBookAsAvailablePassedBookName() throws  Exception{
         library.returnItem(BOOK_NAME);
         assertThat(library.isItemAvailableToLend(BOOK_NAME), is(true));
     }

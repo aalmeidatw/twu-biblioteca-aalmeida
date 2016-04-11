@@ -11,7 +11,7 @@ public class LibraryUsers {
     private List<User> libraryUsers = new ArrayList<>();
     private static String NAME = "name_user";
     private static String NAME_USER = "name_user01";
-    private static String PASSWORD = "@qwer";
+    private static String PASSWORD = "1111";
     private static String EMAIL = "user@provider.com";
     private static int PHONE = 12345678;
 

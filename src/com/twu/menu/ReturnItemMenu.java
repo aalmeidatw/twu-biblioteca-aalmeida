@@ -9,18 +9,25 @@ import com.twu.types.itemType.ItemType;
 public class ReturnItemMenu implements Menu {
     private MessagePrinter messagePrinter;
     private Library library;
-    private ItemType itemType;
     private ScannerInputUser scannerInputUser;
 
     public ReturnItemMenu(Library library) {
         this.messagePrinter = new MessagePrinter();
+        this.scannerInputUser = new ScannerInputUser();
         this.library = library;
     }
 
     @Override
     public void execute() {
-        messagePrinter.messagePrinterOnConsole("Type Item Name To Return :");
+        messagePrinter.messagePrinterOnConsole("Type ItemName To Return :");
         String itemName = scannerInputUser.getUserInfoScanner();
-        library.returnItem(itemName);
+
+        try {
+            library.returnItem(itemName);
+        }
+        catch (Exception e){
+            messagePrinter.messagePrinterOnConsole(e.getMessage());
+
+        }
     }
 }
