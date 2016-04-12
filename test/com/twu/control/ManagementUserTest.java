@@ -24,7 +24,7 @@ public class ManagementUserTest {
     @Before
     public void setUp() throws Exception {
         this.managementUser = new ManagementUser();
-        this.library = new Library(new LibraryItems().createItemListLibrary());
+        this.library = new Library(new LibraryItems().createItemListLibrary(), new ManagementUser());
         this.libraryUsers = new LibraryUsers();
     }
 

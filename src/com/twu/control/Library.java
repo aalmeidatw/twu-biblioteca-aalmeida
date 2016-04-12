@@ -1,8 +1,5 @@
 package com.twu.control;
 
-
-
-
 import com.twu.exception.ErrorNameException;
 import com.twu.types.Name;
 import com.twu.types.itemType.ItemType;
@@ -10,7 +7,6 @@ import com.twu.types.book.Book;
 import com.twu.types.library.ItemLibrary;
 import com.twu.types.movie.Movie;
 import com.twu.types.user.*;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -22,9 +18,9 @@ public class Library {
     private User userAuthenticated;
     private static String ERROR_NAME_EXCEPTION = "ItemName Not Found - Try Again!";
 
-    public Library(List<ItemLibrary> libraryItems){
+    public Library(List<ItemLibrary> libraryItems, ManagementUser managementUser){
         this.libraryItems = libraryItems;
-        this.managementUser = new ManagementUser();
+        this.managementUser = managementUser;
     }
 
     public boolean loginUser(String user_name, String password){
@@ -32,7 +28,8 @@ public class Library {
     }
 
     public List<ItemLibrary> returnItemList(ItemType itemType){
-         if(isBook(itemType)){
+
+        if(isBook(itemType)){
             return getAvailableBooks();
 
         }else if(isMovie(itemType)){
@@ -86,7 +83,6 @@ public class Library {
     }
 
     public void lendItem(String name) throws Exception{
-
         ItemLibrary item = getLibraryItem(name);
 
         if(item != null){
@@ -95,7 +91,7 @@ public class Library {
             throw new ErrorNameException(ERROR_NAME_EXCEPTION);
     }
 
-    public void returnItem(String name) throws Exception{
+    public void returnBorrowedItem(String name) throws Exception{
         ItemLibrary item = getLibraryItem(name);
 
         if (item != null ) {
@@ -104,8 +100,7 @@ public class Library {
             throw new ErrorNameException(ERROR_NAME_EXCEPTION);
     }
 
-    protected ItemLibrary getLibraryItem(String name) {
-
+    protected ItemLibrary getLibraryItem(String name) throws Exception {
         Optional<ItemLibrary> result = findLibraryItem(name);
         return result.orElse(null);
     }

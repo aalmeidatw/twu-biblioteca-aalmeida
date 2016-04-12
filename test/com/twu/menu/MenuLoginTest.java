@@ -2,6 +2,7 @@ package com.twu.menu;
 
 
 import com.twu.control.Library;
+import com.twu.control.ManagementUser;
 import com.twu.provider.LibraryItems;
 import org.junit.Before;
 import org.junit.Test;
@@ -18,19 +19,19 @@ public class MenuLoginTest {
 
     @Before
     public void setUp() throws Exception {
-        this.library = new Library(new LibraryItems().createItemListLibrary());
+        this.library = new Library(new LibraryItems().createItemListLibrary(), new ManagementUser());
         this.loginMenu = new LoginMenu(library);
 
     }
 
     @Test
-    public void shoudReturnTrueWhenUserAsAuthenticated() throws Exception {
+    public void shouldReturnTrueWhenUserAsAuthenticated() throws Exception {
         loginMenu.setUserStatus(USER_NAME, PASSWORD);
         assertThat(loginMenu.isUserAuthenticated(), is(true));
     }
 
     @Test
-    public void shoudReturnTrueWhenUserAsNotAuthenticated() throws Exception {
+    public void shouldReturnTrueWhenUserAsNotAuthenticated() throws Exception {
         loginMenu.setUserStatus(USER_NAME, ERROR_PASSWORD);
         assertThat(loginMenu.isUserAuthenticated(), is(false));
     }

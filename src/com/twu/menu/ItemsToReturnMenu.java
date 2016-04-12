@@ -4,12 +4,12 @@ package com.twu.menu;
 import com.twu.IO.MessagePrinter;
 import com.twu.control.Library;
 
-public class ShowAllItemMenu implements Menu {
+public class ItemsToReturnMenu implements Menu {
     private MessagePrinter messagePrinter;
     private Library library;
 
 
-    public ShowAllItemMenu (Library library){
+    public ItemsToReturnMenu(Library library){
         this.messagePrinter = new MessagePrinter();
         this.library = library;
     }
@@ -17,6 +17,6 @@ public class ShowAllItemMenu implements Menu {
     @Override
     public void execute() {
         messagePrinter.messagePrinterOnConsole("List of All items To Return: ");
-        messagePrinter.printerListOfConsole(library.getAllItemsToReturn());
+        messagePrinter.printerItemListOnConsole(library.getAllItemsToReturn());
     }
 }

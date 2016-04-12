@@ -18,6 +18,6 @@ public class MovieListMenu implements Menu {
     @Override
     public void execute() {
         messagePrinter.messagePrinterOnConsole("List of Available Movies!  : ");
-        messagePrinter.printerListOfConsole(library.returnItemList(itemType.MOVIE));
+        messagePrinter.printerItemListOnConsole(library.returnItemList(itemType.MOVIE));
     }
 }

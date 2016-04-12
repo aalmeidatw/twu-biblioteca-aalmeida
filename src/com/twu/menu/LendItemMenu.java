@@ -16,8 +16,6 @@ public class LendItemMenu implements Menu {
         this.library = library;
     }
 
-
-
     @Override
     public void execute() {
         messagePrinter.messagePrinterOnConsole("Type ItemName To Lend :");
@@ -29,6 +27,5 @@ public class LendItemMenu implements Menu {
         catch (Exception e){
             messagePrinter.messagePrinterOnConsole(e.getMessage());
         }
-
     }
 }

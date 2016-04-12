@@ -21,16 +21,13 @@ public class MessagePrinter {
         System.out.println("-> 1: List of available Books ");
         System.out.println("-> 2: List of available Movies ");
         System.out.println("-> 3: Lend Item ");
-        System.out.println("-> 4: Show All itens to Return  ");
-//        System.out.println("-> 4: Lend Item a Library  ");
-//        System.out.println("-> 5: Return Item a Library ");
-//        System.out.println("-> 9: Show my user info ");
-//        System.out.println("-> Q: Quit System  ");
+        System.out.println("-> 4: Show All items to Return  ");
+        System.out.println("-> 5: Show My User Info: ");
+        System.out.println("-> Q: Quit System  ");
         System.out.println("-------> Type:  ");
     }
 
-
-    public final void printerListOfConsole(List<ItemLibrary> list) {
+    public final void printerItemListOnConsole(List<ItemLibrary> list) {
 
         list.stream()
                 .forEach(itemLibrary -> {

@@ -1,20 +1,19 @@
 package com.twu.control;
 
-import com.twu.exception.ErrorNameException;
 import com.twu.provider.LibraryItems;
 import com.twu.types.itemType.ItemType;
 import com.twu.types.user.User;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import com.twu.types.library.ItemLibrary;
-
+import org.mockito.Mock;
 import java.util.List;
-
-import static junit.framework.TestCase.assertSame;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertNull;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+import static org.mockito.MockitoAnnotations.*;
 
 
 public class LibraryTest {
@@ -28,16 +27,23 @@ public class LibraryTest {
     private static String PASSWORD = "1111";
     private static String ERROR_PASSWORD = "@qweAr";
 
+    @Mock
+    ManagementUser managementUser;
 
     @Before
     public void setUp() throws Exception {
-        this.library = new Library(new LibraryItems().createItemListLibrary());
+        initMocks(this);
+
+        when(managementUser.loginUser(USER_NAME, PASSWORD)).thenReturn(true);
+        when(managementUser.loginUser(USER_NAME, ERROR_PASSWORD)).thenReturn(false);
+
+        this.library = new Library(new LibraryItems().createItemListLibrary(), new ManagementUser());
      }
 
 
 
     @Test
-    public void shouldReturnItemWhenPassedItemName(){
+    public void shouldReturnItemWhenPassedItemName() throws Exception {
         ItemLibrary item = library.getLibraryItem(MOVIE_NAME);
         assertThat(item.getItem().getName(), is(MOVIE_NAME));
     }
@@ -49,12 +55,21 @@ public class LibraryTest {
 
     @Test
     public void shouldReturnTrueWhenIsUserAuthenticated(){
-        assertThat(library.loginUser(USER_NAME, PASSWORD), is(true));
+        Library lib  =  new Library(new LibraryItems().createItemListLibrary(), managementUser);
+
+        boolean result = lib.loginUser(USER_NAME, PASSWORD);
+        verify(managementUser).loginUser(USER_NAME, PASSWORD);
+        assertThat(result, is(true));
     }
 
     @Test
     public void shouldReturnFalseWhenIsUserIsNotAuthenticated(){
-        assertThat(library.loginUser(USER_NAME, ERROR_PASSWORD), is(false));
+        Library lib  = new Library(new LibraryItems().createItemListLibrary(), managementUser);
+
+        boolean result = lib.loginUser(USER_NAME, ERROR_PASSWORD);
+
+        verify(managementUser).loginUser(USER_NAME, ERROR_PASSWORD);
+        assertThat(result, is(false));
     }
 
     @Test
