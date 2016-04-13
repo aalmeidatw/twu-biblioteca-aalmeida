@@ -12,7 +12,7 @@ public class MessagePrinter {
         System.out.println("===================================");
     }
 
-    public final void messagePrinterOnConsole(String value) {
+    public final void print(String value) {
         System.out.println(value);
     }
 
@@ -27,7 +27,7 @@ public class MessagePrinter {
         System.out.println("-------> Type:  ");
     }
 
-    public final void printerItemListOnConsole(List<ItemLibrary> list) {
+    public final void printerItemList(List<ItemLibrary> list) {
 
         list.stream()
                 .forEach(itemLibrary -> {

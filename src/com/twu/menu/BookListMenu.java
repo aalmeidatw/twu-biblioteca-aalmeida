@@ -18,7 +18,7 @@ public class BookListMenu implements Menu {
 
     @Override
     public void execute() {
-        messagePrinter.messagePrinterOnConsole("List of Available Books!  : ");
-        messagePrinter.printerItemListOnConsole(library.returnItemList(itemType.BOOK));
+        messagePrinter.print("List of Available Books!  : ");
+        messagePrinter.printerItemList(library.returnItemList(itemType.BOOK));
     }
 }

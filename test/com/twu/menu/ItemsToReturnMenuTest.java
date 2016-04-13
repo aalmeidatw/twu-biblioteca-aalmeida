@@ -1,33 +1,35 @@
 package com.twu.menu;
 
+import com.twu.IO.MessagePrinter;
 import com.twu.control.Library;
 import com.twu.control.ManagementUser;
 import com.twu.provider.LibraryItems;
-import com.twu.types.library.ItemLibrary;
 import org.junit.Before;
 import org.junit.Test;
-import java.util.List;
-
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.*;
+import org.mockito.Mock;
+import static org.mockito.Mockito.*;
+import static org.mockito.MockitoAnnotations.initMocks;
 
 public class ItemsToReturnMenuTest {
-    private LoginMenu loginMenu;
     private Library library;
     private static String MOVIE_NAME = "Mad Max";
+    private ItemsToReturnMenu itemsToReturnMenu;
+
+
+    @Mock
+    MessagePrinter messagePrinterMock;
 
     @Before
     public void setUp() throws Exception {
+        initMocks(this);
+
         this.library = new Library(new LibraryItems().createItemListLibrary(), new ManagementUser());
-        this.loginMenu = new LoginMenu(library);
+        this.itemsToReturnMenu = new ItemsToReturnMenu(library);
     }
 
     @Test
-    public void shouldReturnItemListOfReturn() throws Exception {
-        library.lendItem(MOVIE_NAME);
-        List<ItemLibrary> returnList = library.getAllItemsToReturn();
-
-        assertThat(returnList.get(0).getItem().getName(), is(MOVIE_NAME));
-
+    public void shouldExecutePrintMethod(){
+        itemsToReturnMenu.execute();
+        verify(messagePrinterMock).print(MOVIE_NAME);
     }
 }

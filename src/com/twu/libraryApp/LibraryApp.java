@@ -23,7 +23,7 @@ public class LibraryApp {
 
             } while (!option.equals("Q"));
         } else {
-            messagePrinter.messagePrinterOnConsole("LOGIN FAIL - SYSTEM IS OUT!");
+            messagePrinter.print("LOGIN FAIL - SYSTEM IS OUT!");
 
         }
     }

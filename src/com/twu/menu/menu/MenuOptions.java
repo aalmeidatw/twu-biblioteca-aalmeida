@@ -65,11 +65,11 @@ public class MenuOptions {
                 break;
 
             case "Q":
-                messagePrinter.messagePrinterOnConsole("Exit of System");
+                messagePrinter.print("Exit of System");
                 break;
 
             default:
-                messagePrinter.messagePrinterOnConsole("Select a valid option!");
+                messagePrinter.print("Select a valid option!");
                 break;
         }
     }

@@ -31,18 +31,18 @@ public class LoginMenu implements Menu {
 
         if (library.loginUser(userName, password)){
             this.userAuthenticated = AUTHENTICATED;
-            library.setUserAuthenticated(library.getUser(userName));
+            library.setUserAuthenticated(library.returnUserInfo(userName));
         } else
             this.userAuthenticated = NOT_AUTHENTICATED;
     }
 
     protected String getPasswordInput() {
-        messagePrinter.messagePrinterOnConsole("PassWord : ");
+        messagePrinter.print("PassWord : ");
         return scannerInputUser.getInputLoginUser();
     }
 
     protected String getUserNameInput() {
-        messagePrinter.messagePrinterOnConsole("UserName : ");
+        messagePrinter.print("UserName : ");
         return  scannerInputUser.getInputLoginUser();
     }
 

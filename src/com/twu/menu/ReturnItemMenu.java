@@ -18,17 +18,17 @@ public class ReturnItemMenu implements Menu {
 
     @Override
     public void execute() {
-        messagePrinter.messagePrinterOnConsole("List Items To Return: " + "\n\n");
-        messagePrinter.printerItemListOnConsole(library.getAllItemsToReturn());
+        messagePrinter.print("List Items To Return: " + "\n\n");
+        messagePrinter.printerItemList(library.getAllItemsToReturn());
 
-        messagePrinter.messagePrinterOnConsole("Type ItemName To Return :" + "\n\n");
+        messagePrinter.print("Type ItemName To Return :" + "\n\n");
         String itemName = scannerInputUser.getNameItemScanner();
 
         try {
             library.returnBorrowedItem(itemName);
         }
         catch (Exception e){
-            messagePrinter.messagePrinterOnConsole(e.getMessage());
+            messagePrinter.print(e.getMessage());
         }
     }
 }

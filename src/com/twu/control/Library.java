@@ -123,7 +123,7 @@ public class Library {
                 userAuthenticated.getPhoneNumber() + " \n";
     }
 
-    public User getUser(String userName){
+    public User returnUserInfo(String userName){
         return managementUser.getUser(userName);
     }
 

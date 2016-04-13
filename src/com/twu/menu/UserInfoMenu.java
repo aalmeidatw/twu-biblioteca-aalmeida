@@ -15,7 +15,7 @@ public class UserInfoMenu implements Menu {
 
     @Override
     public void execute() {
-        messagePrinter.messagePrinterOnConsole("User Info: ");
-        messagePrinter.messagePrinterOnConsole(library.getUserInfo());
+        messagePrinter.print("User Info: ");
+        messagePrinter.print(library.getUserInfo());
     }
 }

@@ -18,14 +18,14 @@ public class LendItemMenu implements Menu {
 
     @Override
     public void execute() {
-        messagePrinter.messagePrinterOnConsole("Type ItemName To Lend :");
+        messagePrinter.print("Type ItemName To Lend :");
         String itemName = scannerInputUser.getNameItemScanner();
 
         try {
             library.lendItem(itemName);
         }
         catch (Exception e){
-            messagePrinter.messagePrinterOnConsole(e.getMessage());
+            messagePrinter.print(e.getMessage());
         }
     }
 }

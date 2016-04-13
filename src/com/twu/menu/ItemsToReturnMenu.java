@@ -16,7 +16,7 @@ public class ItemsToReturnMenu implements Menu {
 
     @Override
     public void execute() {
-        messagePrinter.messagePrinterOnConsole("List of All items To Return: ");
-        messagePrinter.printerItemListOnConsole(library.getAllItemsToReturn());
+        messagePrinter.print("List of All items To Return: ");
+        messagePrinter.printerItemList(library.getAllItemsToReturn());
     }
 }
