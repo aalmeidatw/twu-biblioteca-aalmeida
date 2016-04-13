@@ -20,7 +20,6 @@ import static org.mockito.MockitoAnnotations.initMocks;
 
 public class BookListMenuTest {
     private BookListMenu bookListMenu;
-    private Library library;
     private static String MESSAGE = "message to print";
     private static String NAME =  "name";
     private static int PUBLICATION_YEAR = 1244;
@@ -43,8 +42,7 @@ public class BookListMenuTest {
         this.itemLibraryMock = new ItemLibrary(itemMock);
 
         this.itemList.add(itemLibraryMock);
-
-    }
+     }
 
     @Test
     public void shouldTestIfPrintIsCalled() throws Exception {
