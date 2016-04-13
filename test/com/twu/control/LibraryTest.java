@@ -32,8 +32,6 @@ public class LibraryTest {
     @Mock
     ManagementUser managementUserMock;
 
-
-
     @Before
     public void setUp() throws Exception {
         initMocks(this);
@@ -61,8 +59,6 @@ public class LibraryTest {
         assertThat(result, is(true));
     }
 
-
-
     @Test
     public void shouldReturnFalseWhenIsUserIsNotAuthenticated(){
         boolean result = library.loginUser(USER_NAME, ERROR_PASSWORD);
@@ -70,10 +66,9 @@ public class LibraryTest {
         assertThat(result, is(false));
     }
 
-
     @Test
     public void shouldReturnUserPassedUserName(){
-        User userResult = library.returnUserInfo(USER_NAME);
+        library.returnUserInfo(USER_NAME);
         verify(managementUserMock).getUser(USER_NAME);
     }
 
