@@ -18,13 +18,14 @@ public class ItemsToReturnMenuTest {
 
     @Mock
     MessagePrinter messagePrinterMock;
+    ManagementUser managementUserMock;
+    Library libraryMock;
 
     @Before
     public void setUp() throws Exception {
         initMocks(this);
-
-        this.library = new Library(new LibraryItems().createItemListLibrary(), new ManagementUser());
-        this.itemsToReturnMenu = new ItemsToReturnMenu(library);
+        this.libraryMock = new Library(new LibraryItems().createItemListLibrary(), managementUserMock);
+        this.itemsToReturnMenu = new ItemsToReturnMenu(libraryMock);
     }
 
     @Test
