@@ -10,9 +10,9 @@ public class ReturnItemMenu implements Menu {
     private Library library;
     private ScannerInputUser scannerInputUser;
 
-    public ReturnItemMenu(Library library) {
-        this.messagePrinter = new MessagePrinter();
-        this.scannerInputUser = new ScannerInputUser();
+    public ReturnItemMenu(Library library, MessagePrinter messagePrinter, ScannerInputUser scannerInputUser) {
+        this.messagePrinter = messagePrinter;
+        this.scannerInputUser = scannerInputUser;
         this.library = library;
     }
 

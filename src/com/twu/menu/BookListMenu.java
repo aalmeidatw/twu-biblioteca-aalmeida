@@ -11,8 +11,8 @@ public class BookListMenu implements Menu {
     private Library library;
     private ItemType itemType;
 
-    public BookListMenu(Library library) {
-        this.messagePrinter = new MessagePrinter();
+    public BookListMenu(Library library, MessagePrinter messagePrinter) {
+        this.messagePrinter = messagePrinter;
         this.library = library;
     }
 

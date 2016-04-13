@@ -9,8 +9,8 @@ public class ItemsToReturnMenu implements Menu {
     private Library library;
 
 
-    public ItemsToReturnMenu(Library library){
-        this.messagePrinter = new MessagePrinter();
+    public ItemsToReturnMenu(Library library, MessagePrinter messagePrinter){
+        this.messagePrinter = messagePrinter;
         this.library = library;
     }
 

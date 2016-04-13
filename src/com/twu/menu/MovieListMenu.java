@@ -10,8 +10,8 @@ public class MovieListMenu implements Menu {
     private Library library;
     private ItemType itemType;
 
-    public MovieListMenu(Library library) {
-        this.messagePrinter = new MessagePrinter();
+    public MovieListMenu(Library library, MessagePrinter messagePrinter) {
+        this.messagePrinter = messagePrinter;
         this.library = library;
     }
 

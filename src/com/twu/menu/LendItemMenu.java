@@ -10,9 +10,9 @@ public class LendItemMenu implements Menu {
     private Library library;
     private ScannerInputUser scannerInputUser;
 
-    public LendItemMenu(Library library){
-        this.messagePrinter = new MessagePrinter();
-        this.scannerInputUser = new ScannerInputUser();
+    public LendItemMenu(Library library, MessagePrinter messagePrinter, ScannerInputUser scannerInputUser){
+        this.messagePrinter = messagePrinter;
+        this.scannerInputUser = scannerInputUser;
         this.library = library;
     }
 

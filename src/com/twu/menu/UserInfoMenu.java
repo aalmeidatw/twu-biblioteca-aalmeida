@@ -8,9 +8,9 @@ public class UserInfoMenu implements Menu {
     private Library library;
     private MessagePrinter messagePrinter;
 
-    public UserInfoMenu(Library library){
+    public UserInfoMenu(Library library, MessagePrinter messagePrinter){
         this.library = library;
-        this.messagePrinter = new MessagePrinter();
+        this.messagePrinter = messagePrinter;
     }
 
     @Override

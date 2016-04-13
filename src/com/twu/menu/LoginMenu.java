@@ -13,10 +13,10 @@ public class LoginMenu implements Menu {
     private static boolean AUTHENTICATED = true;
     private static boolean NOT_AUTHENTICATED = false;
 
-    public LoginMenu(Library library) {
-        this.messagePrinter = new MessagePrinter();
+    public LoginMenu(Library library, MessagePrinter messagePrinter, ScannerInputUser scannerInputUser) {
+        this.messagePrinter = messagePrinter;
         this.library = library;
-        this.scannerInputUser = new ScannerInputUser();
+        this.scannerInputUser = scannerInputUser;
      }
 
     @Override
