@@ -37,7 +37,7 @@ public class BookListMenuTest {
         initMocks(this);
 
         this.libraryMock = new Library(new LibraryItems().createItemListLibrary(), managementUserMock);
-        this.bookListMenu = new BookListMenu(libraryMock);
+        this.bookListMenu = new BookListMenu(libraryMock, messagePrinterMock);
         this.itemMock = new Item(new Name(NAME), new PublicationYear(PUBLICATION_YEAR));
         this.itemLibraryMock = new ItemLibrary(itemMock);
 

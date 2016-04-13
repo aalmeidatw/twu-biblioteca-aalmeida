@@ -32,12 +32,12 @@ public class MenuOptions {
     public void menuOption(String option) {
 
         Map<String, Menu> map = new HashMap<>();
-        map.put("1", new BookListMenu(library));
-        map.put("2", new MovieListMenu(library));
-        map.put("3", new LendItemMenu(library));
-        map.put("4", new ReturnItemMenu(library));
-        map.put("5", new UserInfoMenu(library));
-        map.put("Q", new MovieListMenu(library));
+        map.put("1", new BookListMenu(library, messagePrinter));
+        map.put("2", new MovieListMenu(library, messagePrinter));
+        map.put("3", new LendItemMenu(library, messagePrinter, scannerInputUser));
+        map.put("4", new ReturnItemMenu(library, messagePrinter, scannerInputUser));
+        map.put("5", new UserInfoMenu(library, messagePrinter));
+        map.put("Q", new MovieListMenu(library, messagePrinter));
 
         map.get(option).execute();
 
@@ -75,13 +75,13 @@ public class MenuOptions {
     }
 
     private void initMenuOption(Library library){
-        this.bookListMenu = new BookListMenu(library);
-        this.movieListMenu = new MovieListMenu(library);
-        this.loginMenu = new LoginMenu(library);
-        this.returnItemMenu = new ReturnItemMenu(library);
-        this.userInfoMenu = new UserInfoMenu(library);
-        this.itemsToReturnMenu = new ItemsToReturnMenu(library);
-        this.lendItemMenu = new LendItemMenu(library);
+        this.bookListMenu = new BookListMenu(library, messagePrinter);
+        this.movieListMenu = new MovieListMenu(library, messagePrinter);
+        this.loginMenu = new LoginMenu(library, messagePrinter, scannerInputUser);
+        this.returnItemMenu = new ReturnItemMenu(library, messagePrinter, scannerInputUser);
+        this.userInfoMenu = new UserInfoMenu(library, messagePrinter);
+        this.itemsToReturnMenu = new ItemsToReturnMenu(library, messagePrinter);
+        this.lendItemMenu = new LendItemMenu(library, messagePrinter,scannerInputUser);
 
     }
 

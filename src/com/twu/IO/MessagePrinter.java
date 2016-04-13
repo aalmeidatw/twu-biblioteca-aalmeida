@@ -3,6 +3,7 @@ package com.twu.IO;
 
 import com.twu.types.library.ItemLibrary;
 import java.util.List;
+import java.util.Optional;
 
 
 public class MessagePrinter {
@@ -28,10 +29,11 @@ public class MessagePrinter {
     }
 
     public final void printerItemList(List<ItemLibrary> list) {
-
         list.stream()
-                .forEach(itemLibrary -> {
+                .filter(itemLibrary -> {
                     System.out.print(itemLibrary.getItem().toString());
+                    return true;
                 });
     }
+
 }

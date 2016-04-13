@@ -25,7 +25,7 @@ public class ItemsToReturnMenuTest {
     public void setUp() throws Exception {
         initMocks(this);
         this.libraryMock = new Library(new LibraryItems().createItemListLibrary(), managementUserMock);
-        this.itemsToReturnMenu = new ItemsToReturnMenu(libraryMock);
+        this.itemsToReturnMenu = new ItemsToReturnMenu(libraryMock, messagePrinterMock);
     }
 
     @Test

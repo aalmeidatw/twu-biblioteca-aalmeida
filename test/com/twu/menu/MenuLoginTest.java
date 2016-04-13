@@ -1,6 +1,8 @@
 package com.twu.menu;
 
 
+import com.twu.IO.MessagePrinter;
+import com.twu.IO.ScannerInputUser;
 import com.twu.control.Library;
 import com.twu.control.ManagementUser;
 import com.twu.provider.LibraryItems;
@@ -12,6 +14,8 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class MenuLoginTest {
     private LoginMenu loginMenu;
     private Library library;
+    private MessagePrinter messagePrinter;
+    private ScannerInputUser scannerInputUser;
     private static String USER_NAME = "name_user01";
     private static String PASSWORD = "1111";
     private static String ERROR_PASSWORD = "@qweAr";
@@ -20,7 +24,7 @@ public class MenuLoginTest {
     @Before
     public void setUp() throws Exception {
         this.library = new Library(new LibraryItems().createItemListLibrary(), new ManagementUser());
-        this.loginMenu = new LoginMenu(library);
+        this.loginMenu = new LoginMenu(library, messagePrinter, scannerInputUser);
 
     }
 
