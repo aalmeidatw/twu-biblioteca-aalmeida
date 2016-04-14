@@ -43,7 +43,8 @@ public class LendItemMenuTest {
         this.lendItemMenu = new LendItemMenu(libraryMock, messagePrintMock,scannerMock);
     }
 
-    @Test
+
+
     public void shouldTestIfPrintIsCalled() throws Exception {
 
         Scanner scannerMock = mock(Scanner.class);

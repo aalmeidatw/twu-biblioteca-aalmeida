@@ -3,18 +3,14 @@ package com.twu.menu;
 import com.twu.IO.MessagePrinter;
 import com.twu.control.Library;
 import com.twu.types.Name;
-import com.twu.types.book.AuthorName;
-import com.twu.types.book.Book;
 import com.twu.types.item.PublicationYear;
 import com.twu.types.itemType.ItemType;
 import com.twu.types.library.ItemLibrary;
-import org.junit.After;
+import com.twu.types.movie.DirectorName;
+import com.twu.types.movie.Movie;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
-import org.mockito.Mockito;
-import java.util.ArrayList;
-import java.util.List;
 import static java.util.Arrays.asList;
 import static org.mockito.Matchers.anyListOf;
 import static org.mockito.Matchers.anyString;
@@ -23,13 +19,11 @@ import static org.mockito.Mockito.when;
 import static org.mockito.MockitoAnnotations.initMocks;
 
 
-public class BookListMenuTest {
-    private static String MESSAGE = "message to print";
-    private static String NAME =  "name";
+public class MovieListMenuTest {
+    static String NAME =  "name";
     private static int PUBLICATION_YEAR = 1244;
     private static String AUTHOR_NAME = "AUTHOR_NAME";
-    private List<ItemLibrary> itemList = new ArrayList<>();
-    private BookListMenu bookListMenu;
+    private MovieListMenu movieListMenu;
 
     @Mock
     MessagePrinter messagePrinterMock;
@@ -38,31 +32,28 @@ public class BookListMenuTest {
     Library libraryMock;
 
 
-
     @Before
-    public void setUp()  {
+    public void setUp() throws Exception {
         initMocks(this);
 
-        ItemLibrary book = new ItemLibrary(new Book(new Name(NAME), new PublicationYear(PUBLICATION_YEAR), new AuthorName(AUTHOR_NAME)));
+        ItemLibrary movie = new ItemLibrary(new Movie(new Name(NAME),
+                                            new PublicationYear(PUBLICATION_YEAR),
+                                            new DirectorName(AUTHOR_NAME), 4));
 
-        when(libraryMock.returnItemList(ItemType.BOOK)).thenReturn(asList(book));
+        when(libraryMock.returnItemList(ItemType.MOVIE)).thenReturn(asList(movie));
 
-        this.bookListMenu = new BookListMenu(libraryMock, messagePrinterMock);
-     }
+        this.movieListMenu = new MovieListMenu(libraryMock, messagePrinterMock);
+    }
 
     @Test
     public void shouldCallPrintListMethod() throws Exception {
-        bookListMenu.execute();
+        movieListMenu.execute();
         verify(messagePrinterMock).printerItemList(anyListOf(ItemLibrary.class));
     }
 
     @Test
     public void shouldCallPrintMethod() throws Exception {
-        bookListMenu.execute();
+        movieListMenu.execute();
         verify(messagePrinterMock).print(anyString());
     }
-
-
-
-
 }

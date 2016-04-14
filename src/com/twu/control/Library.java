@@ -1,6 +1,6 @@
 package com.twu.control;
 
-import com.twu.exception.ErrorNameException;
+import com.twu.exception.NameErrorException;
 import com.twu.types.Name;
 import com.twu.types.itemType.ItemType;
 import com.twu.types.book.Book;
@@ -88,7 +88,7 @@ public class Library {
         if(item != null){
             item.modifyAvailableItemStatus(false);
         }else
-            throw new ErrorNameException(ERROR_NAME_EXCEPTION);
+            throw new NameErrorException(ERROR_NAME_EXCEPTION);
     }
 
     public void returnBorrowedItem(String name) throws Exception{
@@ -97,7 +97,7 @@ public class Library {
         if (item != null ) {
             item.modifyAvailableItemStatus(true);
         }else
-            throw new ErrorNameException(ERROR_NAME_EXCEPTION);
+            throw new NameErrorException(ERROR_NAME_EXCEPTION);
     }
 
     protected ItemLibrary getLibraryItem(String name) throws Exception {

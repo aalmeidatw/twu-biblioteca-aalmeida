@@ -14,19 +14,13 @@ public class MenuOptions {
     private Library library;
     private ScannerInputUser scannerInputUser;
     private MessagePrinter messagePrinter;
-    private BookListMenu bookListMenu;
-    private MovieListMenu movieListMenu;
     private LoginMenu loginMenu;
-    private ReturnItemMenu returnItemMenu;
-    private UserInfoMenu userInfoMenu;
-    private ItemsToReturnMenu itemsToReturnMenu;
-    private LendItemMenu lendItemMenu;
 
-    public MenuOptions(ScannerInputUser scannerInputUser, MessagePrinter messagePrinter) {
-        this.library = new Library(new LibraryItems().createItemListLibrary(), new ManagementUser());
+    public MenuOptions(Library library, ScannerInputUser scannerInputUser, MessagePrinter messagePrinter) {
+        this.library = library;
         this.scannerInputUser = scannerInputUser;
         this.messagePrinter = messagePrinter;
-        initMenuOption(library);
+        this.loginMenu = new LoginMenu(library, messagePrinter, scannerInputUser);
     }
 
     public void menuOption(String option) {
@@ -44,26 +38,6 @@ public class MenuOptions {
 
         switch (option) {
 
-            case "1":
-                bookListMenu.execute();
-                break;
-
-            case "2":
-                movieListMenu.execute();
-                break;
-
-            case "3":
-                lendItemMenu.execute();
-            break;
-
-            case "4":
-                returnItemMenu.execute();
-                break;
-
-            case  "5":
-                userInfoMenu.execute();
-                break;
-
             case "Q":
                 messagePrinter.print("Exit of System");
                 break;
@@ -74,16 +48,6 @@ public class MenuOptions {
         }
     }
 
-    private void initMenuOption(Library library){
-        this.bookListMenu = new BookListMenu(library, messagePrinter);
-        this.movieListMenu = new MovieListMenu(library, messagePrinter);
-        this.loginMenu = new LoginMenu(library, messagePrinter, scannerInputUser);
-        this.returnItemMenu = new ReturnItemMenu(library, messagePrinter, scannerInputUser);
-        this.userInfoMenu = new UserInfoMenu(library, messagePrinter);
-        this.itemsToReturnMenu = new ItemsToReturnMenu(library, messagePrinter);
-        this.lendItemMenu = new LendItemMenu(library, messagePrinter,scannerInputUser);
-
-    }
 
      public boolean userLogin(){
         loginMenu.execute();

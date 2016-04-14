@@ -1,7 +1,10 @@
 package com.twu.libraryApp;
+import com.twu.control.Library;
+import com.twu.control.ManagementUser;
 import com.twu.menu.menu.MenuOptions;
 import com.twu.IO.MessagePrinter;
 import com.twu.IO.ScannerInputUser;
+import com.twu.provider.LibraryItems;
 
 public class LibraryApp {
 
@@ -9,7 +12,8 @@ public class LibraryApp {
 
         MessagePrinter messagePrinter = new MessagePrinter();
         ScannerInputUser scannerInputUser = new ScannerInputUser();
-        MenuOptions menu = new MenuOptions(scannerInputUser, messagePrinter);
+        Library library = new Library(new LibraryItems().createItemListLibrary(), new ManagementUser());
+        MenuOptions menu = new MenuOptions(library, scannerInputUser, messagePrinter);
 
         String option;
         messagePrinter.welcomeMessage();

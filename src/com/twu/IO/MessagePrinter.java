@@ -8,16 +8,16 @@ import java.util.Optional;
 
 public class MessagePrinter {
 
-    public final void welcomeMessage() {
+    public void welcomeMessage() {
         System.out.println("Welcome to Bangalore Public Library!");
         System.out.println("===================================");
     }
 
-    public final void print(String value) {
+    public void print(String value) {
         System.out.println(value);
     }
 
-    public final void showMenuOptions() {
+    public void showMenuOptions() {
         System.out.println("\n\n ");
         System.out.println("-> 1: List of available Books ");
         System.out.println("-> 2: List of available Movies ");
@@ -28,12 +28,9 @@ public class MessagePrinter {
         System.out.println("-------> Type:  ");
     }
 
-    public final void printerItemList(List<ItemLibrary> list) {
+    public void printerItemList(List<ItemLibrary> list) {
         list.stream()
-                .filter(itemLibrary -> {
-                    System.out.print(itemLibrary.getItem().toString());
-                    return true;
-                });
+                .forEach(itemLibrary -> System.out.print(itemLibrary.getItem().toString()));
     }
 
 }
