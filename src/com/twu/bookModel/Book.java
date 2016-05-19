@@ -1,22 +1,16 @@
-package com.twu.book;
-
-
-import com.twu.model.AuthorName;
-import com.twu.model.BookName;
-import com.twu.model.PublicationYear;
+package com.twu.bookModel;
 
 public class Book {
     private BookName bookName;
     private AuthorName authorName;
     private PublicationYear publicationYear;
-    private boolean isAvaliable;
+    private boolean isAvailable;
 
-
-    public Book (BookName bookName, AuthorName authorName, PublicationYear publicationYear, boolean isAvaliable){
+    public Book (BookName bookName, AuthorName authorName, PublicationYear publicationYear, boolean isReserved){
         this.bookName = bookName;
         this.authorName = authorName;
         this.publicationYear = publicationYear;
-        this.isAvaliable = isAvaliable;
+        this.isAvailable = isReserved;
     }
 
     public String getBookName(){return bookName.getBookName();}
@@ -29,13 +23,15 @@ public class Book {
         return publicationYear.getPublicationYear();
     }
 
-    public void setAvailableBook(boolean avaliable){
-        this.isAvaliable = avaliable;
+    public void setBookIsAvailable(){
+        this.isAvailable = true;
     }
 
     public boolean isAvailable(){
-        return isAvaliable;
+        return isAvailable;
     }
 
-
+    public void setAvailableBook(boolean status) {
+        this.isAvailable = status;
+    }
 }

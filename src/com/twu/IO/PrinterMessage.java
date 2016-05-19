@@ -1,4 +1,4 @@
-package com.twu.message;
+package com.twu.IO;
 
 
 public class PrinterMessage {
@@ -8,7 +8,7 @@ public class PrinterMessage {
         System.out.println("===================================");
     }
 
-    public final void printMessageOnConsole(String value){
+    public final void print(String value){
         System.out.println(value);
     }
 
@@ -31,6 +31,10 @@ public class PrinterMessage {
         System.out.println("-> R: Request book a checkout  ");
         System.out.println("-> C: Return book a library  ");
         System.out.println("-> Q: Quit System  ");
+    }
+
+    public final void listOfAvailableBooksMessage(){
+        System.out.print("List of Available Books: ");
     }
 
 }
