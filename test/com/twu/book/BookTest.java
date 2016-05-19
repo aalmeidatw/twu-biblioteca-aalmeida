@@ -9,13 +9,12 @@ import org.junit.Test;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
-
 public class BookTest {
     private Book myBook;
 
     @Before
     public void setUp() throws Exception {
-         this.myBook = new Book(new BookName("O Vento"),new AuthorName("João Simplicio"), new PublicationYear(1980), true);
+    this.myBook = new Book(new BookName("O Vento"),new AuthorName("João Simplicio"), new PublicationYear(1980), true);
     }
 
     @Test
@@ -55,6 +54,4 @@ public class BookTest {
         this.myBook.setAvailableBook(false);
         assertThat(this.myBook.isAvailable(), is(false));
     }
-
-
 }

@@ -1,10 +1,8 @@
 package com.twu.control;
 
-
-import com.twu.bookModel.Book;
-import com.twu.book.BookAlgorithm;
 import com.twu.IO.ScannerInputUser;
-
+import com.twu.book.BookAlgorithm;
+import com.twu.bookModel.Book;
 import java.util.ArrayList;
 
 public class Library {
@@ -20,9 +18,5 @@ public class Library {
     public void returnBook(int value){
         myBooks.get(value).setBookIsAvailable();
     }
-
-
-
-
 
 }

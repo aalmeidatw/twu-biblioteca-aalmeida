@@ -1,12 +1,11 @@
 package com.twu.libraryApp;
-import com.twu.bookModel.Book;
-import com.twu.book.BookAlgorithm;
-import com.twu.provider.BookList;
+
 import com.twu.IO.PrinterMessage;
 import com.twu.IO.ScannerInputUser;
-
+import com.twu.book.BookAlgorithm;
+import com.twu.bookModel.Book;
+import com.twu.provider.BookList;
 import java.util.ArrayList;
-
 
 public class LibraryApp {
 
@@ -20,39 +19,39 @@ public class LibraryApp {
         printerMessage.welcomeMessage();
         boolean quitSystem = false;
 
-     do {
-         printerMessage.selectedOptionMessage();
-         printerMessage.showOtherFunctionsMessage();
+        do {
+            printerMessage.selectedOptionMessage();
+            printerMessage.showOtherFunctionsMessage();
 
-         String option = scannerInputUser.getUserInfoScanner();
+            String option = scannerInputUser.getUserInfoScanner();
 
-         switch (option) {
-             case "L":
-                 printerMessage.print("List of Available Books! : ");
-                 bookAlgorithm.showListAvailableBooks();
-                 break;
+            switch (option) {
+                case "L":
+                    printerMessage.print("List of Available Books! : ");
+                    bookAlgorithm.showListAvailableBooks();
+                    break;
 
-             case "B":
-                 bookAlgorithm.bookDetail();
-                 break;
+                case "B":
+                    bookAlgorithm.bookDetail();
+                    break;
 
-             case "R":
-                 bookAlgorithm.checkoutBook();
-                 break;
+                case "R":
+                    bookAlgorithm.checkoutBook();
+                    break;
 
-             case "C":
-                 bookAlgorithm.bookReturn();
-                 break;
+                case "C":
+                    bookAlgorithm.bookReturn();
+                    break;
 
-             case "Q":
-                 quitSystem = true;
-                 break;
+                case "Q":
+                    quitSystem = true;
+                    break;
 
-             default:
-                 printerMessage.print("Select a valid option!");
+                default:
+                    printerMessage.print("Select a valid option!");
 
-        }
-     }  while (!quitSystem);
+            }
+        }  while (!quitSystem);
 
     }
 }
