@@ -1,9 +1,9 @@
 package com.twu.libraryApp;
-import com.twu.book.Book;
+import com.twu.bookModel.Book;
 import com.twu.book.BookAlgorithm;
-import com.twu.book.BookList;
-import com.twu.message.PrinterMessage;
-import com.twu.scanner.ScannerInputUser;
+import com.twu.provider.BookList;
+import com.twu.IO.PrinterMessage;
+import com.twu.IO.ScannerInputUser;
 
 import java.util.ArrayList;
 
@@ -11,8 +11,6 @@ import java.util.ArrayList;
 public class LibraryApp {
 
     public static void main(String[] args) {
-
-
 
         PrinterMessage printerMessage = new PrinterMessage();
         ScannerInputUser scannerInputUser = new ScannerInputUser();
@@ -22,7 +20,6 @@ public class LibraryApp {
         printerMessage.welcomeMessage();
         boolean quitSystem = false;
 
-
      do {
          printerMessage.selectedOptionMessage();
          printerMessage.showOtherFunctionsMessage();
@@ -31,6 +28,7 @@ public class LibraryApp {
 
          switch (option) {
              case "L":
+                 printerMessage.print("List of Available Books! : ");
                  bookAlgorithm.showListAvailableBooks();
                  break;
 
@@ -51,7 +49,7 @@ public class LibraryApp {
                  break;
 
              default:
-                 printerMessage.printMessageOnConsole("Select a valid option!");
+                 printerMessage.print("Select a valid option!");
 
         }
      }  while (!quitSystem);

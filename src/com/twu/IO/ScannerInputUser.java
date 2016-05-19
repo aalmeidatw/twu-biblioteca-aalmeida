@@ -1,6 +1,5 @@
-package com.twu.scanner;
+package com.twu.IO;
 
-import com.twu.message.PrinterMessage;
 import java.util.Scanner;
 
 public class ScannerInputUser {
@@ -9,8 +8,8 @@ public class ScannerInputUser {
 
     public String getUserInfoScanner(){
 
-        printerMessage.printMessageOnConsole("\n\n ");
-        printerMessage.printMessageOnConsole("Choise a letter :");
+        printerMessage.print("\n\n ");
+        printerMessage.print("Choise a letter :");
 
         return scanner.nextLine().toUpperCase();
     }

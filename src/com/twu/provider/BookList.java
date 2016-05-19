@@ -1,8 +1,9 @@
-package com.twu.book;
+package com.twu.provider;
 
-import com.twu.model.AuthorName;
-import com.twu.model.BookName;
-import com.twu.model.PublicationYear;
+import com.twu.bookModel.AuthorName;
+import com.twu.bookModel.Book;
+import com.twu.bookModel.BookName;
+import com.twu.bookModel.PublicationYear;
 import java.util.ArrayList;
 
 
